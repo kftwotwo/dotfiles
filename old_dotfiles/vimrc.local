@@ -1,0 +1,24 @@
+"" Show trailing whitespace as dots
+set list
+set listchars=""
+set listchars=tab:\ \
+set listchars+=trail:.
+
+"" Airline Theme
+let g:airline_theme='bubblegum'
+
+" Colors
+let g:solarized_termcolors=16
+color solarized
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+"" Toggle NerdTree on/off
+nmap <leader>n :NERDTreeToggle<CR>
+
+" TSlime for VIM and Rspec
+let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
