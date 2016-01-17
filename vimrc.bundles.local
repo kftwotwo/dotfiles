@@ -1,0 +1,3 @@
+Bundle 'jgdavey/tslime.vim'
+UnBundle 'nathanaelkane/vim-indent-guides'
+Bundle 'Yggdroot/indentLine'
