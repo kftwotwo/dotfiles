@@ -33,3 +33,4 @@ alias rpry='bundle exec pry -r ./config/environment'
 alias dir='ls -alhF --color'
 
 alias tmx='tmux attach -t base || tmux new -s base'
+alias vun='vim +BundleInstall! +BundleClean +q'
