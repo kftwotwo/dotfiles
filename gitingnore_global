@@ -40,3 +40,7 @@ Thumbs.db
 .env
 .ENV
 config/environment_variables.yml
+
+# Node Modules
+##############
+node_modules
