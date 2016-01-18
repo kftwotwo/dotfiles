@@ -34,3 +34,8 @@ alias dir='ls -alhF --color'
 
 alias tmx='tmux attach -t base || tmux new -s base'
 alias vun='vim +BundleInstall! +BundleClean +q'
+
+alias py='python3'
+
+# Node Server
+alias ns='DEBUG=myapp:* npm start'
