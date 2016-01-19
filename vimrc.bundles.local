@@ -1,6 +1,5 @@
 UnBundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
-Bundle 'mileszs/ack.vim'
 Bundle 'pbrisbin/vim-mkdir'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-bundler'
