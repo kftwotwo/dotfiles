@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dmoody/.oh-my-zsh
+export ZSH=/Users/dmmoody/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -53,7 +53,7 @@ plugins=(git bundler osx rake ruby)
 
 # User configuration
 
-export PATH="/Users/dmoody/.gem/ruby/2.1.7/bin:/Users/dmoody/.rubies/ruby-2.1.7/lib/ruby/gems/2.1.0/bin:/Users/dmoody/.rubies/ruby-2.1.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -98,6 +98,36 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 setopt PROMPT_SUBST ; PS1='🐸  %{$fg[blue]%}%c%{$fg[yellow]%}$(__git_ps1 " (%s)")%{$fg[blue]%} $%{$reset_color%} '
+
+# Postgres
+# export PGDATA=/usr/local/var/postgres
+# export PGHOST=/tmp
+eval "$(pyenv init -)"
+
+# export PATH="/usr/local/heroku/bin:$PATH"
+
+# Keypad
+# 0 . Enter
+bindkey -s "^[Op" "0"
+bindkey -s "^[Ol" "."
+bindkey -s "^[OM" "^M"
+# 1 2 3
+bindkey -s "^[Oq" "1"
+bindkey -s "^[Or" "2"
+bindkey -s "^[Os" "3"
+# 4 5 6
+bindkey -s "^[Ot" "4"
+bindkey -s "^[Ou" "5"
+bindkey -s "^[Ov" "6"
+# 7 8 9
+bindkey -s "^[Ow" "7"
+bindkey -s "^[Ox" "8"
+bindkey -s "^[Oy" "9"
+# + -  * /
+bindkey -s "^[Ok" "+"
+bindkey -s "^[Om" "-"
+bindkey -s "^[Oj" "*"
+bindkey -s "^[Oo" "/"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
