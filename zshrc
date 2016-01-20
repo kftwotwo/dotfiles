@@ -54,6 +54,7 @@ plugins=(git bundler osx rake ruby)
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/Users/dmoody/.gem/ruby/2.1.7/bin:/Users/dmoody/.rubies/ruby-2.1.7/lib/ruby/gems/2.1.0/bin:/Users/dmoody/.rubies/ruby-2.1.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -100,8 +101,10 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 setopt PROMPT_SUBST ; PS1='🐸  %{$fg[blue]%}%c%{$fg[yellow]%}$(__git_ps1 " (%s)")%{$fg[blue]%} $%{$reset_color%} '
 
 # Postgres
-# export PGDATA=/usr/local/var/postgres
-# export PGHOST=/tmp
+export PGDATA=/usr/local/var/postgres
+export PGHOST=/tmp
+
+# Python
 eval "$(pyenv init -)"
 
 # export PATH="/usr/local/heroku/bin:$PATH"
