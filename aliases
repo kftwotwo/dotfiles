@@ -39,3 +39,6 @@ alias py='python3'
 
 # Node Server
 alias ns='DEBUG=myapp:* npm start'
+
+# Redis Server
+alias redis='redis-server /usr/local/etc/redis.conf'
