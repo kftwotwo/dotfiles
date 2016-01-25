@@ -44,3 +44,6 @@ config/environment_variables.yml
 # Node Modules
 ##############
 node_modules
+
+# Vim generated files
+*.swp

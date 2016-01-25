@@ -9,6 +9,11 @@ alias gpl='git pull'
 alias gpu='git push'
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias glg2='git log --date-order --all --graph --name-status --format="%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
+alias gsu='git submodule update'
+alias gsubs='git submodule init && git submodule sync && git submodule update'
+alias gsh='git show'
+alias githist='git log --graph --branches --oneline'
+alias gdif='git diff'
 
 # ls alias for color-mode
 alias lh='ls -lhaG'
@@ -26,15 +31,19 @@ alias grep='grep --color=auto'
 alias ps='ps -ax'
 
 # refresh shell
-alias reload='source ~/.bash_profile'
+alias reload='source ~/.zshrc'
 
+# rails
 alias be='bundle exec'
 alias rpry='bundle exec pry -r ./config/environment'
-alias dir='ls -alhF --color'
 
+# tmux
 alias tmx='tmux attach -t base || tmux new -s base'
+
+# vim
 alias vun='vim +BundleInstall! +BundleClean +q'
 
+# python
 alias py='python3'
 
 # Node Server
