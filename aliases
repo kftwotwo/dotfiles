@@ -37,6 +37,7 @@ alias reload='source ~/.zshrc'
 # rails
 alias be='bundle exec'
 alias rpry='bundle exec pry -r ./config/environment'
+alias ropry='bundle exec pry -r ./config/application'
 
 # tmux
 alias tmx='tmux attach -t base || tmux new -s base'
