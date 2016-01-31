@@ -134,3 +134,12 @@ bindkey -s "^[Oo" "/"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# auto start Tmux
+_not_inside_tmux() { [[ -z "$TMUX"  ]]  }
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tmx
+  fi
+}
+ensure_tmux_is_running
