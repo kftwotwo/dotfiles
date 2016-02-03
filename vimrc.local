@@ -27,6 +27,16 @@ map <Leader>a :call RunAllSpecs()<CR>
 
 " Toggle NerdTree on/off
 nmap <leader>n :NERDTreeToggle<CR>
+map <leader>ff :NERDTreeFind<cr>
+
+" Switch between last two buffers
+map <leader><leader> <C-^>
+
+" Maps Alt-[h,j,k,l] to resizing a window split
+map <silent> <C-h> 2<C-w><
+map <silent> <C-j> 2<C-W>-
+map <silent> <C-k> 2<C-W>+
+map <silent> <C-l> 2<C-w>>
 
 " Set Relative Line Numbers
 autocmd BufEnter * set relativenumber
