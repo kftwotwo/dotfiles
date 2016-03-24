@@ -48,7 +48,7 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
-" Tmux runner 
+" Tmux runner
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
 nnoremap <leader>rpry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rpry'}<cr>
 nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'pry'}<cr>
