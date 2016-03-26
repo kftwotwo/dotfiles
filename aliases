@@ -19,6 +19,9 @@ alias gdif='git diff'
 # ls alias for color-mode
 alias lh='ls -lhaG'
 
+# fun aliases
+alias weather='curl -4 http://wttr.in/portland' # weather for portland
+
 # up 'n' folders
 alias ..='cd ..'
 alias ...='cd ../..'
