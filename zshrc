@@ -49,7 +49,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler osx rake ruby)
+plugins=(git bundler osx rake ruby docker docker-compose)
 
 # User configuration
 
@@ -143,3 +143,9 @@ ensure_tmux_is_running() {
   fi
 }
 ensure_tmux_is_running
+
+#export JIRA_AUTHORIZATION='Basic ZG1vb2R5OkRtOTg4MjE3Nw=='
+#export SLACK_PATH='/services/T02NXBE16/B1498D5GC/EhJyB1SKtkSTQCrRE4K8nKrD'
+#export PAGER_DUTY_SERVICE_KEY=c254f0150f52474787c070a68bc98b24
+#export PAGER_DUTY_AUTHORIZATION_TOKEN=-SWrAyWUtrtPtGoimzvs
+export BUNDLER_EDITOR='vi'
