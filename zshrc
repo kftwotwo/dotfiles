@@ -144,7 +144,7 @@ ensure_tmux_is_running() {
 }
 ensure_tmux_is_running
 
-#export JIRA_AUTHORIZATION='Basic ZG1vb2R5OkRtOTg4MjE3Nw=='
+export JIRA_AUTHORIZATION='Basic ZG1vb2R5OkRtOTg4MjE3Nyo='
 #export SLACK_PATH='/services/T02NXBE16/B1498D5GC/EhJyB1SKtkSTQCrRE4K8nKrD'
 #export PAGER_DUTY_SERVICE_KEY=c254f0150f52474787c070a68bc98b24
 #export PAGER_DUTY_AUTHORIZATION_TOKEN=-SWrAyWUtrtPtGoimzvs
