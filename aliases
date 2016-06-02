@@ -56,3 +56,6 @@ alias ns='DEBUG=myapp:* npm start'
 
 # Redis Server
 alias redis='redis-server /usr/local/etc/redis.conf'
+
+# Hub for Github
+alias hb='hub browse'
