@@ -54,7 +54,7 @@ plugins=(git bundler osx rake ruby docker docker-compose)
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="/Users/dmoody/.gem/ruby/2.1.7/bin:/Users/dmoody/.rubies/ruby-2.1.7/lib/ruby/gems/2.1.0/bin:/Users/dmoody/.rubies/ruby-2.1.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/Users/dmoody/.gem/ruby/2.1.7/bin:/Users/dmoody/.rubies/ruby-2.1.7/lib/ruby/gems/2.1.0/bin:/Users/dmoody/.rubies/ruby-2.1.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -148,4 +148,6 @@ export JIRA_AUTHORIZATION='Basic ZG1vb2R5OkRtOTg4MjE3Nyo='
 #export SLACK_PATH='/services/T02NXBE16/B1498D5GC/EhJyB1SKtkSTQCrRE4K8nKrD'
 #export PAGER_DUTY_SERVICE_KEY=c254f0150f52474787c070a68bc98b24
 #export PAGER_DUTY_AUTHORIZATION_TOKEN=-SWrAyWUtrtPtGoimzvs
+
 export BUNDLER_EDITOR='vi'
+
