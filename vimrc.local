@@ -60,4 +60,4 @@ nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd'
 nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 
 " Binding Pry Shortcut
-map ,bp orequire "pry"; binding.pry<ESC>
+map ,bp orequire "pry"; binding.pry; 1<ESC>
