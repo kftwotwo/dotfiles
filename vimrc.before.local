@@ -5,3 +5,5 @@ let g:airline_powerline_fonts = 1
 " a new buffer is opened; to prevent this behavior, add the following to
 " your .vimrc.before.local file:
 let g:spf13_no_autochdir = 1
+
+let g:spf13_bundle_groups=['general', 'writing', 'snipmate', 'programming', 'ruby', 'python', 'javascript', 'html', 'misc',]
