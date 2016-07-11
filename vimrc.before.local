@@ -6,4 +6,4 @@ let g:airline_powerline_fonts = 1
 " your .vimrc.before.local file:
 let g:spf13_no_autochdir = 1
 
-let g:spf13_bundle_groups=['general', 'writing', 'snipmate', 'programming', 'ruby', 'python', 'javascript', 'html', 'misc',]
+"let g:spf13_bundle_groups=['general', 'writing', 'snipmate', 'programming', 'ruby', 'python', 'javascript', 'html', 'misc',]
