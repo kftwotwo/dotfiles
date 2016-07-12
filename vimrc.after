@@ -1,0 +1,11 @@
+"#############################################
+"" Easier split navigation
+"#############################################
+
+"" Use ctrl-[hjkl] to select the active split!
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+let g:airline_theme='bubblegum'
