@@ -96,7 +96,7 @@ export TERM=xterm-256color
 export LSCOLORS="exfxcxdxbxegedabagacad"
 
 # Custom prompt with GIT Status
-source ~/.git-prompt.sh
+source ~/Dotfiles/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 setopt PROMPT_SUBST ; PS1='🐸  %{$fg[blue]%}%c%{$fg[yellow]%}$(__git_ps1 " (%s)")%{$fg[blue]%} $%{$reset_color%} '
 
