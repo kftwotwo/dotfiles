@@ -65,3 +65,6 @@ nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 
 " Binding Pry Shortcut
 map ,bp orequire "pry"; binding.pry; 1<ESC>
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
