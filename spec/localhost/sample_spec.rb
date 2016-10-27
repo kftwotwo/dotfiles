@@ -20,6 +20,10 @@ describe package("ack"), :if => os[:family] == "darwin" do
   it { should be_installed.by("homebrew") }
 end
 
+describe package("the_silver_searcher"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
 describe package("heroku"), :if => os[:family] == "darwin" do
   it { should be_installed.by("homebrew") }
 end
@@ -49,6 +53,30 @@ describe package("redis"), :if => os[:family] == "darwin" do
 end
 
 describe package("chruby"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("elixir"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("erlang"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("htop-osx"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("kubernetes-cli"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("packer"), :if => os[:family] == "darwin" do
+  it { should be_installed.by("homebrew") }
+end
+
+describe package("ruby-install"), :if => os[:family] == "darwin" do
   it { should be_installed.by("homebrew") }
 end
 
