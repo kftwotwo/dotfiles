@@ -28,4 +28,8 @@ context "system tools" do
   describe package("the_silver_searcher"), :if => os[:family] == "darwin" do
     it { should be_installed.by("homebrew") }
   end
+
+  describe package("jq"), :if => os[:family] == "darwin" do
+    it { should be_installed.by("homebrew") }
+  end
 end
