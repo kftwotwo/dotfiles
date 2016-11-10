@@ -16,3 +16,4 @@
 "Bundle 'christoomey/vim-tmux-runner.git'
 "Bundle 'jlanzarotta/bufexplorer'
 "Bundle 'vim-ruby/vim-ruby'
+Bundle 'junegunn/goyo.vim'
