@@ -84,3 +84,6 @@ if has('clipboard')
     set clipboard=unnamed
   endif
 endif
+
+"" Bufexplorer
+let g:bufExplorerShowNoName=1
