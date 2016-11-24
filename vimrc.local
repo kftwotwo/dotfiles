@@ -5,8 +5,8 @@ set listchars=tab:\ \             " a tab should display as "  ", trailing
 set listchars+=trail:.            " show trailing spaces as dots
 
 " Spacing
-set shiftwidth=2                " Use indents of 4 spaces
-set tabstop=2                   " An indentation every four columns
+set shiftwidth=2                " Use indents of 2 spaces
+set tabstop=2                   " An indentation every two columns
 set softtabstop=2               " Let backspace delete indent
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
@@ -15,11 +15,8 @@ autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
 
 " Colors
 set background=dark
-let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
-color solarized             " Load a colorscheme
+color solarized
 
 " TSlime for VIM and Rspec
 " let g:rspec_runner = "os_x_iterm2"
