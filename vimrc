@@ -1,14 +1,12 @@
-"*****************************************************************************
-"" Vim-PLug core
+" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{,}} foldlevel=0 foldmethod=marker
+
+" Vim Plug Core"{{
 "*****************************************************************************
 if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
-
-let g:vim_bootstrap_langs = "elixir,erlang,html,javascript,python,ruby"
-let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
   echo "Installing Vim-Plug..."
@@ -21,9 +19,9 @@ endif
 
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
+"}}
 
-"*****************************************************************************
-"" Plug install packages
+" Plug install packages"{{
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -41,7 +39,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
-Plug 'avelino/vim-bootstrap-updater'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'romainl/vim-qf'
 Plug 'pbrisbin/vim-mkdir'
@@ -52,6 +49,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'mileszs/ack.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'godlygeek/tabular'
+"}}
 
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
@@ -61,7 +60,7 @@ if system('uname -o') =~ '^GNU/'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session
+"" Vim-Session"{{
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -76,43 +75,45 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
+"}}
 
-"" Color
+"" Color"{{
 Plug 'tomasr/molokai'
+"}}
 
-"*****************************************************************************
-"" Custom bundles
+" Custom bundles
 "*****************************************************************************
 
-" elixir
+" elixir"{{
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
+"}}
 
-
-" erlang
-Plug 'jimenezrick/vimerl'
-
-
-" html
+" html"{{
 "" HTML Bundle
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
+"}}
 
+" json"{{
+"" JSON Bundle
+Plug 'elzr/vim-json'
+"}}
 
-" javascript
+" javascript"{{
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
+"}}
 
-
-" python
+" python"{{
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
+"}}
 
-
-" ruby
+" ruby"{{
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -120,9 +121,8 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
+"}}
 
-
-"*****************************************************************************
 "*****************************************************************************
 
 "" Include user's extra bundle
@@ -136,51 +136,69 @@ call plug#end()
 filetype plugin indent on
 
 
-"*****************************************************************************
-"" Basic Setup
+" Basic Setup
 "*****************************************************************************"
-"" Encoding
+
+" Encoding"{
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
+"}
 
-"" Fix backspace indent
+" Fix backspace indent"{
 set backspace=indent,eol,start
+"}
 
-"" Tabs. May be overriten by autocmd rules
+" Tabs. May be overriten by autocmd rules"{
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
+"}
 
-"" Map leader to ,
+" Map leader to ,"{
 let mapleader=','
+"}
 
-"" Enable hidden buffers
-set hidden
 
-"" Searching
+
+
+" set autowrite                       " Automatically write a file when leaving a modified buffer
+set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
+set history=1000                    " Store a ton of history (default is 20)
+set spell                           " Spell checking on
+set hidden                          " Allow buffer switching without saving
+set iskeyword-=.                    " '.' is an end of word designator
+set iskeyword-=#                    " '#' is an end of word designator
+set iskeyword-=-                    " '-' is an end of word designator
+
+" Searching"{
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+"}
 
-"" Directories for swp files
+" Directories for swp files"{
 set nobackup
 set noswapfile
 
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
+"}
 
-" session management
+" session management"{
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
+"}
+
 
 "*****************************************************************************
 "" Visual Settings
@@ -188,6 +206,28 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+" Set Relative Line Numbers
+autocmd BufEnter * set relativenumber
+set tabpagemax=15               " Only show 15 tabs
+set showmode                    " Display the current mode
+set cursorline                  " Highlight current line
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+
+" Formatting
+
+set wrap                        " Wrap long lines
+set autoindent                  " Indent at the same level of the previous line
+set shiftwidth=2                " Use indents of 4 spaces
+set expandtab                   " Tabs are spaces, not tabs
+set tabstop=2                   " An indentation every four columns
+set softtabstop=2               " Let backspace delete indent
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
+"set matchpairs+=<:>             " Match, to be used with %
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
@@ -248,7 +288,7 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
 if exists("*fugitive#statusline")
-  set statusline+=%{fugitive#statusline()}
+  set statusline+=%fugitive#statusline()
 endif
 
 " vim-airline
@@ -288,6 +328,10 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
 
+" NERDTree Toggle NerdTree on/off
+nmap <leader>n :NERDTreeToggle<CR>
+map <leader>ff :NERDTreeFind<cr>
+
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
@@ -299,11 +343,7 @@ let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
 
 " terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
+nnoremap <silent> <leader>sh :VimShellCreate<CR>
 
 "*****************************************************************************
 "" Functions
@@ -397,7 +437,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+noremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
@@ -432,10 +472,6 @@ endif
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
 
 if has('macunix')
   " pbcopy for OSX copy/paste
@@ -605,7 +641,6 @@ if !exists('g:airline_powerline_fonts')
 else
   let g:airline#extensions#tabline#left_sep = ''
   let g:airline#extensions#tabline#left_alt_sep = ''
-
   " powerline symbols
   let g:airline_left_sep = ''
   let g:airline_left_alt_sep = ''
@@ -616,6 +651,8 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+
+" Strip Whitespaces
 function! StripTrailingWhitespace()
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -629,3 +666,15 @@ function! StripTrailingWhitespace()
 endfunction
 
 call StripTrailingWhitespace()
+
+
+" Colors
+set background=dark
+let g:solarized_termtrans=1
+color solarized
+" color molokai
+
+
+" Instead of reverting the cursor to the last position in the buffer, we
+" set it to the first line when editing a git commit message
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])

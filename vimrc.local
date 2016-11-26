@@ -13,17 +13,6 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
 
-" Colors
-set background=dark
-let g:solarized_termtrans=1
-color solarized
-
-" TSlime for VIM and Rspec
-" let g:rspec_runner = "os_x_iterm2"
-" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
-
-" VTR Runner
-" let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
 let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
 
 " RSpec.vim mappings
@@ -32,21 +21,11 @@ map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-" Toggle NerdTree on/off
-nmap <leader>n :NERDTreeToggle<CR>
-map <leader>ff :NERDTreeFind<cr>
-
-" Switch between last two buffers
-map <leader><leader> <C-^>
-
 " Maps Alt-[h,j,k,l] to resizing a window split
 map <silent> <C-h> 2<C-w><
 map <silent> <C-j> 2<C-W>-
 map <silent> <C-k> 2<C-W>+
 map <silent> <C-l> 2<C-w>>
-
-" Set Relative Line Numbers
-autocmd BufEnter * set relativenumber
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =

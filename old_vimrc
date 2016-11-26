@@ -1,5 +1,4 @@
-" Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" Modeline and Notes
 
 "   Licensed under the Apache License, Version 2.0 (the "License");
 "   you may not use this file except in compliance with the License.
@@ -12,59 +11,51 @@
 "   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 "   See the License for the specific language governing permissions and
 "   limitations under the License.
-" }
+"
 
-" Environment {
+" Environment 
 
-    " Identify platform {
-        silent function! OSX()
-            return has('macunix')
+" Identify platform 
+silent function! OSX()
+return has('macunix')
         endfunction
         silent function! LINUX()
-            return has('unix') && !has('macunix') && !has('win32unix')
-        endfunction
-        silent function! WINDOWS()
-            return  (has('win32') || has('win64'))
-        endfunction
-    " }
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+    return  (has('win32') || has('win64'))
+endfunction
+" 
 
-    " Basics {
+    " Basics 
         set nocompatible        " Must be first line
         if !WINDOWS()
             set shell=/bin/sh
         endif
-    " }
+    " 
 
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
-    
-    " Arrow Key Fix {
+    " Arrow Key Fix 
         " https://github.com/spf13/spf13-vim/issues/780
         if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
             inoremap <silent> <C-[>OC <RIGHT>
         endif
-    " }
+    " 
 
-" }
+" 
 
-" Use before config if available {
+" Use before config if available 
     if filereadable(expand("~/.vimrc.before"))
         source ~/.vimrc.before
     endif
-" }
+" 
 
-" Use bundles config {
+" Use bundles config 
     if filereadable(expand("~/.vimrc.bundles"))
         source ~/.vimrc.bundles
     endif
-" }
+" 
 
-" General {
+" General 
 
     set background=dark         " Assume a dark background
 
@@ -117,9 +108,6 @@
     set iskeyword-=#                    " '#' is an end of word designator
     set iskeyword-=-                    " '-' is an end of word designator
 
-    " Instead of reverting the cursor to the last position in the buffer, we
-    " set it to the first line when editing a git commit message
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
     " http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
     " Restore cursor to file position in previous editing session
@@ -139,7 +127,7 @@
         augroup END
     endif
 
-    " Setting up the directories {
+    " Setting up the directories 
         set backup                  " Backups are nice ...
         if has('persistent_undo')
             set undofile                " So is persistent undo ...
@@ -156,11 +144,11 @@
                 \ '\[example pattern\]'
                 \ ]
         endif
-    " }
+    " 
 
-" }
+" 
 
-" Vim UI {
+" Vim UI 
 
     if !exists('g:override_spf13_bundles') && filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
         let g:solarized_termcolors=256
@@ -170,14 +158,6 @@
         color solarized             " Load a colorscheme
     endif
 
-    set tabpagemax=15               " Only show 15 tabs
-    set showmode                    " Display the current mode
-
-    set cursorline                  " Highlight current line
-
-    highlight clear SignColumn      " SignColumn should match background
-    highlight clear LineNr          " Current line number row will have same background color in relative mode
-    "highlight clear CursorLineNr    " Remove highlight color from current line number
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -193,10 +173,10 @@
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
         if !exists('g:override_spf13_bundles')
-            set statusline+=%{fugitive#statusline()} " Git Hotness
+            set statusline+=%fugitive#statusline() " Git Hotness
         endif
-        set statusline+=\ [%{&ff}/%Y]            " Filetype
-        set statusline+=\ [%{getcwd()}]          " Current dir
+        set statusline+=\ [%&ff/%Y]            " Filetype
+        set statusline+=\ [%getcwd()]          " Current dir
         set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
 
@@ -218,21 +198,8 @@
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 
-" }
+" 
 
-" Formatting {
-
-    set wrap                        " Wrap long lines
-    set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=2                " Use indents of 4 spaces
-    set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=2                   " An indentation every four columns
-    set softtabstop=2               " Let backspace delete indent
-    set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
-    set splitright                  " Puts new vsplit windows to the right of the current
-    set splitbelow                  " Puts new split windows to the bottom of the current
-    "set matchpairs+=<:>             " Match, to be used with %
-    set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     "set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
     " Remove trailing whitespaces and ^M chars
     " To disable the stripping of whitespace, add the following to your
@@ -246,9 +213,9 @@
 
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
 
-" }
+" 
 
-" Key (re)Mappings {
+" Key (re)Mappings 
 
     " The default leader is '\', but many people prefer ',' as it's in a standard
     " location. To override this behavior and set it back to '\' (or any other
@@ -390,7 +357,7 @@
 
 
     " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+    map <leader>fc /\v^[<\|=>]}( .*\|$)<CR>
 
     " Shortcuts
     " Change Working Directory to that of the current file
