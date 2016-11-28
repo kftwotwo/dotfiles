@@ -1,6 +1,6 @@
 " vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{,}} foldlevel=0 foldmethod=marker
 
-" Vim Plug Core"{{
+" Vim Plug Core"
 "*****************************************************************************
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -19,9 +19,55 @@ endif
 
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
-"}}
 
-" Plug install packages"{{
+" File Directories
+"*****************************************************************************
+
+" Functions {
+
+" Initialize directories {
+function! InitializeDirectories()
+  let parent = $HOME
+  let prefix = 'vim'
+  let dir_list = {
+        \ 'backup': 'backupdir',
+        \ 'views': 'viewdir',
+        \ 'swap': 'directory' }
+
+  if has('persistent_undo')
+    let dir_list['undo'] = 'undodir'
+  endif
+
+  " To specify a different directory in which to place the vimbackup,
+  " vimviews, vimundo, and vimswap files/directories, add the following to
+  " your .vimrc.before.local file:
+  "   let g:spf13_consolidated_directory = <full path to desired directory>
+  "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
+  if exists('g:spf13_consolidated_directory')
+    let common_dir = g:spf13_consolidated_directory . prefix
+  else
+    let common_dir = parent . '/.' . prefix
+  endif
+
+  for [dirname, settingname] in items(dir_list)
+    let directory = common_dir . dirname . '/'
+    if exists("*mkdir")
+      if !isdirectory(directory)
+        call mkdir(directory)
+      endif
+    endif
+    if !isdirectory(directory)
+      echo "Warning: Unable to create backup directory: " . directory
+      echo "Try: mkdir -p " . directory
+    else
+      let directory = substitute(directory, " ", "\\\\ ", "g")
+      exec "set " . settingname . "=" . directory
+    endif
+  endfor
+endfunction
+call InitializeDirectories()
+
+" Plug install packages"
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -50,7 +96,8 @@ Plug 'christoomey/vim-tmux-runner'
 Plug 'mileszs/ack.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'godlygeek/tabular'
-"}}
+Plug 'mbbill/undotree'
+"
 
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
@@ -60,7 +107,7 @@ if system('uname -o') =~ '^GNU/'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session"{{
+"" Vim-Session"
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -75,45 +122,45 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
-"}}
+"
 
-"" Color"{{
+"" Color"
 Plug 'tomasr/molokai'
-"}}
+"
 
 " Custom bundles
 "*****************************************************************************
 
-" elixir"{{
+" elixir"
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
-"}}
+"
 
-" html"{{
+" html"
 "" HTML Bundle
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
-"}}
+"
 
-" json"{{
+" json"
 "" JSON Bundle
 Plug 'elzr/vim-json'
-"}}
+"
 
-" javascript"{{
+" javascript"
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
-"}}
+"
 
-" python"{{
+" python"
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
-"}}
+"
 
-" ruby"{{
+" ruby"
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -121,7 +168,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-"}}
+"
 
 "*****************************************************************************
 
@@ -162,9 +209,6 @@ set expandtab
 " Map leader to ,"{
 let mapleader=','
 "}
-
-
-
 
 " set autowrite                       " Automatically write a file when leaving a modified buffer
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -228,6 +272,21 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 "set matchpairs+=<:>             " Match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 
+
+" UndoTree
+set backup                  " Backups are nice ...
+if has('persistent_undo')
+  set undofile                " So is persistent undo ...
+  set undolevels=1000         " Maximum number of changes that can be undone
+  set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+endif
+
+if isdirectory(expand("~/.vim/plugged/undotree/"))
+  nnoremap <Leader>u :UndotreeToggle<CR>
+  " If undotree is opened, it is likely one wants to interact with it.
+  let g:undotree_SetFocusWhenToggle=1
+  let g:undotree_WindowLayout=2
+endif
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
