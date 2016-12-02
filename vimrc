@@ -67,7 +67,7 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-" Plug install packages"
+" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -97,7 +97,6 @@ Plug 'mileszs/ack.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
-"
 
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
@@ -122,45 +121,39 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
-"
 
-"" Color"
+"" Color
 Plug 'tomasr/molokai'
-"
 
 " Custom bundles
 "*****************************************************************************
 
-" elixir"
+" elixir
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
-"
 
-" html"
+" html
 "" HTML Bundle
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
-"
 
-" json"
+" json
 "" JSON Bundle
 Plug 'elzr/vim-json'
-"
 
-" javascript"
+
+" javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
-"
 
-" python"
+" python
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
-"
 
-" ruby"
+" ruby
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -168,7 +161,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-"
+
 
 "*****************************************************************************
 
@@ -186,29 +179,25 @@ filetype plugin indent on
 " Basic Setup
 "*****************************************************************************"
 
-" Encoding"{
+" Encoding
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
-"}
 
-" Fix backspace indent"{
+" Fix backspace indent
 set backspace=indent,eol,start
-"}
 
-" Tabs. May be overriten by autocmd rules"{
+" Tabs. May be overriten by autocmd rules
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
-"}
 
-" Map leader to ,"{
+" Map leader to ,
 let mapleader=','
-"}
 
 " set autowrite                       " Automatically write a file when leaving a modified buffer
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -220,28 +209,25 @@ set iskeyword-=.                    " '.' is an end of word designator
 set iskeyword-=#                    " '#' is an end of word designator
 set iskeyword-=-                    " '-' is an end of word designator
 
-" Searching"{
+" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-"}
 
-" Directories for swp files"{
+" Directories for swp files
 set nobackup
 set noswapfile
 
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
-"}
 
-" session management"{
+" session management
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
-"}
 
 
 "*****************************************************************************
