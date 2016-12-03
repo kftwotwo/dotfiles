@@ -5,9 +5,6 @@ set listchars=tab:\ \             " a tab should display as "  ", trailing
 set listchars+=trail:.            " show trailing spaces as dots
 
 " Spacing
-set shiftwidth=2                " Use indents of 2 spaces
-set tabstop=2                   " An indentation every two columns
-set softtabstop=2               " Let backspace delete indent
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
@@ -41,7 +38,7 @@ nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd'
 nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 
 " Binding Pry Shortcut
-map ,bp orequire "pry"; binding.pry; 1<ESC>
+map ,bp orequire "pry"; binding.pry<ESC>
 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1

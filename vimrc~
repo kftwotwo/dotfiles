@@ -174,17 +174,18 @@ set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
-
 "}}
 " Fix backspace indent"{{
-
 set backspace=indent,eol,start
-
+"}}
+" Tabs. May be overriten by autocmd rules"{{
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set expandtab
 "}}
 " Map leader to ,"{{
-
 let mapleader=','
-
 "}}
 " set autowrite                       " Automatically write a file when leaving a modified buffer"{{
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
@@ -233,9 +234,9 @@ highlight clear LineNr          " Current line number row will have same backgro
 " Formatting"{{
 set wrap                        " Wrap long lines
 set autoindent                  " Indent at the same level of the previous line
-set shiftwidth=2                " Use indents of 2 spaces
+set shiftwidth=2                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
-set tabstop=2                   " An indentation every two columns
+set tabstop=2                   " An indentation every four columns
 set softtabstop=2               " Let backspace delete indent
 set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
 set splitright                  " Puts new vsplit windows to the right of the current
@@ -358,15 +359,12 @@ noremap <F3> :NERDTreeToggle<CR>
 " NERDTree Toggle NerdTree on/off
 nmap <leader>n :NERDTreeToggle<CR>
 map <leader>ff :NERDTreeFind<cr>
-
 "}}
 " grep.vim"{{
-
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
-
 "}}
 " vimshell.vim"{{
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
