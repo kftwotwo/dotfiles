@@ -1,6 +1,6 @@
-" vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{,}} foldlevel=0 foldmethod=marker
+" vim: foldmarker={{,}} foldlevel=0 foldmethod=marker:
 
-" Vim Plug Core"
+" Vim Plug Core""{{
 "*****************************************************************************
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -19,15 +19,15 @@ endif
 
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
-
-" File Directories
+"}}
+" File Directories"{{
 "*****************************************************************************
 
 " Functions {
 
 " Initialize directories {
 function! InitializeDirectories()
-  let parent = $HOME
+  let parent = $HOME . '/.vim'
   let prefix = 'vim'
   let dir_list = {
         \ 'backup': 'backupdir',
@@ -38,16 +38,7 @@ function! InitializeDirectories()
     let dir_list['undo'] = 'undodir'
   endif
 
-  " To specify a different directory in which to place the vimbackup,
-  " vimviews, vimundo, and vimswap files/directories, add the following to
-  " your .vimrc.before.local file:
-  "   let g:spf13_consolidated_directory = <full path to desired directory>
-  "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
-  if exists('g:spf13_consolidated_directory')
-    let common_dir = g:spf13_consolidated_directory . prefix
-  else
-    let common_dir = parent . '/.' . prefix
-  endif
+  let common_dir = parent . '/.' . prefix
 
   for [dirname, settingname] in items(dir_list)
     let directory = common_dir . dirname . '/'
@@ -66,8 +57,8 @@ function! InitializeDirectories()
   endfor
 endfunction
 call InitializeDirectories()
-
-" Plug install packages
+"}}
+" Plug install packages"{{
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
@@ -124,8 +115,8 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
-
-" Custom bundles
+"}}
+" Custom bundles"{{
 "*****************************************************************************
 
 " elixir
@@ -161,11 +152,9 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-
-
+"}}
+"" Include user's extra bundle"{{
 "*****************************************************************************
-
-"" Include user's extra bundle
 if filereadable(expand("~/.vimrc.local.bundles"))
   source ~/.vimrc.local.bundles
 endif
@@ -174,32 +163,30 @@ call plug#end()
 
 " Required:
 filetype plugin indent on
-
-
-" Basic Setup
+"}}
+" Basic Setup"{{
 "*****************************************************************************"
-
-" Encoding
+" Encoding"{{
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
 set ttyfast
-
-" Fix backspace indent
+"}}
+" Fix backspace indent"{{
 set backspace=indent,eol,start
-
-" Tabs. May be overriten by autocmd rules
+"}}
+" Tabs. May be overriten by autocmd rules"{{
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set expandtab
-
-" Map leader to ,
+"}}
+" Map leader to ,"{{
 let mapleader=','
-
-" set autowrite                       " Automatically write a file when leaving a modified buffer
+"}}
+" set autowrite                       " Automatically write a file when leaving a modified buffer"{{
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set history=1000                    " Store a ton of history (default is 20)
@@ -208,44 +195,42 @@ set hidden                          " Allow buffer switching without saving
 set iskeyword-=.                    " '.' is an end of word designator
 set iskeyword-=#                    " '#' is an end of word designator
 set iskeyword-=-                    " '-' is an end of word designator
-
-" Searching
+"}}
+" Searching"{{
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" Directories for swp files
+"}}
+" Directories for swp files"{{
 set nobackup
 set noswapfile
 
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/sh
-
-" session management
+"}}
+" session management"{{
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
-
-
-"*****************************************************************************
-"" Visual Settings
+"}}
+"}}
+"" Visual Settings"{{
 "*****************************************************************************
 syntax on
 set ruler
 set number
-" Set Relative Line Numbers
+" Set Relative Line Numbers"{{
 autocmd BufEnter * set relativenumber
 set tabpagemax=15               " Only show 15 tabs
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
-
-" Formatting
-
+"}}
+" Formatting"{{
 set wrap                        " Wrap long lines
 set autoindent                  " Indent at the same level of the previous line
 set shiftwidth=2                " Use indents of 4 spaces
@@ -257,9 +242,8 @@ set splitright                  " Puts new vsplit windows to the right of the cu
 set splitbelow                  " Puts new split windows to the bottom of the current
 "set matchpairs+=<:>             " Match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-
-
-" UndoTree
+"}}
+" UndoTree"{{
 set backup                  " Backups are nice ...
 if has('persistent_undo')
   set undofile                " So is persistent undo ...
@@ -273,7 +257,7 @@ if isdirectory(expand("~/.vim/plugged/undotree/"))
   let g:undotree_SetFocusWhenToggle=1
   let g:undotree_WindowLayout=2
 endif
-
+"}}
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
   colorscheme molokai
@@ -313,16 +297,15 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
-
-
-"" Disable the blinking cursor.
+"}}
+"" Disable the blinking cursor."{{
 set gcr=a:blinkon0
 set scrolloff=3
-
-"" Status bar
+"}}
+"" Status bar"{{
 set laststatus=2
-
-"" Use modeline overrides
+"}}
+"" Use modeline overrides"{{
 set modeline
 set modelines=10
 
@@ -335,19 +318,18 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 if exists("*fugitive#statusline")
   set statusline+=%fugitive#statusline()
 endif
-
-" vim-airline
+"}}
+" vim-airline"{{
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
-
+"}}
+"" Abbreviations"{{
 "*****************************************************************************
-"" Abbreviations
-"*****************************************************************************
-"" no one is really happy until you have this shortcuts
+"" no one is really happy until you have this shortcuts"{{
 cnoreabbrev W! w!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
@@ -358,8 +340,8 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-
-"" NERDTree configuration
+"}}
+"" NERDTree configuration"{{
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
 let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
@@ -376,22 +358,21 @@ noremap <F3> :NERDTreeToggle<CR>
 " NERDTree Toggle NerdTree on/off
 nmap <leader>n :NERDTreeToggle<CR>
 map <leader>ff :NERDTreeFind<cr>
-
-" grep.vim
+"}}
+" grep.vim"{{
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
-
-" vimshell.vim
+"}}
+" vimshell.vim"{{
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_prompt =  '$ '
-
-" terminal emulation
+"}}
+" terminal emulation"{{
 nnoremap <silent> <leader>sh :VimShellCreate<CR>
-
-"*****************************************************************************
-"" Functions
+"}}
+"" Functions"{{
 "*****************************************************************************
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
@@ -400,29 +381,29 @@ if !exists('*s:setupWrapping')
     set textwidth=79
   endfunction
 endif
-
+"}}
+"}}
+"" Autocmd Rules"{{
 "*****************************************************************************
-"" Autocmd Rules
-"*****************************************************************************
-"" The PC is fast enough, do syntax highlight syncing from start
+"" The PC is fast enough, do syntax highlight syncing from start"{{
 augroup vimrc-sync-fromstart
   autocmd!
   autocmd BufEnter * :syntax sync fromstart
 augroup END
-
-"" Remember cursor position
+"}}
+"" Remember cursor position"{{
 augroup vimrc-remember-cursor-position
   autocmd!
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
-
-"" txt
+"}}
+"" txt"{{
 augroup vimrc-wrapping
   autocmd!
   autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
 augroup END
-
-"" make/cmake
+"}}
+"" make/cmake"{{
 augroup vimrc-make-cmake
   autocmd!
   autocmd FileType make setlocal noexpandtab
@@ -430,15 +411,15 @@ augroup vimrc-make-cmake
 augroup END
 
 set autoread
-
+"}}
+"}}
+"" Mappings"{{
 "*****************************************************************************
-"" Mappings
-"*****************************************************************************
-"" Split
+"" Split"{{
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
-
-"" Git
+"}}
+"" Git"{{
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
 noremap <Leader>gsh :Gpush<CR>
@@ -447,35 +428,35 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
-
-" session management
+"}}
+" session management"{{
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
 nnoremap <leader>sd :DeleteSession<CR>
 nnoremap <leader>sc :CloseSession<CR>
-
-"" Tabs
+"}}
+"" Tabs"{{
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
-
-"" Set working directory
+"}}
+"" Set working directory"{{
 nnoremap <leader>. :lcd %:p:h<CR>
-
-"" Opens an edit command with the path of the currently edited file filled in
+"}}
+"" Opens an edit command with the path of the currently edited file filled in"{{
 noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-"" Opens a tab edit command with the path of the currently edited file filled
+"}}
+"" Opens a tab edit command with the path of the currently edited file filled"{{
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
-"" ctrlp.vim
+"}}
+"" ctrlp.vim"{{
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|tox|ico|git|hg|svn))$'
 let g:ctrlp_user_command = "find %s -type f | grep -Ev '"+ g:ctrlp_custom_ignore +"'"
 let g:ctrlp_use_caching = 1
-
-" The Silver Searcher
+"}}
+" The Silver Searcher"{{
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -487,14 +468,14 @@ noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-
-" snippets
+"}}
+" snippets"{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
-
-" syntastic
+"}}
+" syntastic"{{
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
@@ -502,18 +483,18 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
-
-" Tagbar
+"}}
+" Tagbar"{{
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
-
-" Disable visualbell
+"}}
+" Disable visualbell"{{
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
-
-"" Copy/Paste/Cut
+"}}
+"" Copy/Paste/Cut"{{
 if has('unnamedplus')
   set clipboard=unnamed,unnamedplus
 endif
@@ -523,64 +504,61 @@ if has('macunix')
   vmap <C-x> :!pbcopy<CR>
   vmap <C-c> :w !pbcopy<CR><CR>
 endif
-
-"" Buffer nav
+"}}
+"" Buffer nav"{{
 noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
 noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
-
-"" Close buffer
+"}}
+"" Close buffer"{{
 noremap <leader>c :bd<CR>
-
-"" Clean search (highlight)
+"}}
+"" Clean search (highlight)"{{
 nnoremap <silent> <leader><space> :noh<cr>
-
-"" Switching windows
+"}}
+"" Switching windows"{{
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
-
-"" Vmap for maintain Visual Mode after shifting > and <
+"}}
+"" Vmap for maintain Visual Mode after shifting > and <"{{
 vmap < <gv
 vmap > >gv
-
-"" Move visual block
+"}}
+"" Move visual block"{{
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-
-"" Open current line on GitHub
+"}}
+"" Open current line on GitHub"{{
 nnoremap <Leader>o :.Gbrowse<CR>
+"}}
+"}}
 
+"" Custom configs"{{
 "*****************************************************************************
-"" Custom configs
-"*****************************************************************************
+" elixir"{{
 
-" elixir
-
-
-" erlang
+"}}
+" erlang"{{
 let erlang_folding = 1
 let erlang_show_errors = 1
-
-
-" html
+"}}
+" html"{{
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
-
-" javascript
+"}}
+" javascript"{{
 let g:javascript_enable_domhtmlcss = 1
-
-" vim-javascript
+"}}
+" vim-javascript"{{
 augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
 augroup END
-
-
-" python
+"}}
+" python"{{
 " vim-python
 augroup vimrc-python
   autocmd!
@@ -588,8 +566,8 @@ augroup vimrc-python
         \ formatoptions+=croq softtabstop=4 smartindent
         \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
-
-" jedi-vim
+"}}
+" jedi-vim"{{
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
@@ -599,15 +577,14 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
-
-" syntastic
+"}}
+" syntastic"{{
 let g:syntastic_python_checkers=['python', 'flake8']
-
-" vim-airline
+"}}
+" vim-airline"{{
 let g:airline#extensions#virtualenv#enabled = 1
-
-
-" ruby
+"}}
+" ruby"{{
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -628,14 +605,14 @@ let g:tagbar_type_ruby = {
       \ 'F:singleton methods'
       \ ]
       \ }
-
-" RSpec.vim mappings
+"}}
+" RSpec.vim mappings"{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-" Ruby refactory
+"}}
+" Ruby refactory"{{
 nnoremap <leader>rap  :RAddParameter<cr>
 nnoremap <leader>rcpc :RConvertPostConditional<cr>
 nnoremap <leader>rel  :RExtractLet<cr>
@@ -645,21 +622,16 @@ nnoremap <leader>rit  :RInlineTemp<cr>
 vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
-
-
-"*****************************************************************************
-"*****************************************************************************
-
-"" Include user's local vim config
+"}}
+"" Include user's local vim config"{{
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
+"}}
+"}}
+"" Convenience variables"{{
 "*****************************************************************************
-"" Convenience variables
-"*****************************************************************************
-
-" vim-airline
+" vim-airline"{{
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -695,9 +667,8 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
-
-" Strip Whitespaces
+"}}
+" Strip Whitespaces"{{
 function! StripTrailingWhitespace()
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -711,15 +682,15 @@ function! StripTrailingWhitespace()
 endfunction
 
 call StripTrailingWhitespace()
-
-
-" Colors
+"}}
+" Colors"{{
 set background=dark
 let g:solarized_termtrans=1
-color solarized
+color gruvbox
 " color molokai
-
-
-" Instead of reverting the cursor to the last position in the buffer, we
+"}}
+" Instead of reverting the cursor to the last position in the buffer, we"{{
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+"}}
+"}}
