@@ -88,7 +88,6 @@ Plug 'jgdavey/tslime.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'mileszs/ack.vim'
-Plug 'altercation/vim-colors-solarized'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
 
@@ -135,7 +134,6 @@ Plug 'mattn/emmet-vim'
 
 " json
 Plug 'elzr/vim-json'
-
 
 " javascript
 Plug 'jelera/vim-javascript-syntax'
@@ -479,13 +477,13 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 "}}
 " syntastic"{{
-let g:syntastic_always_populate_loc_list=1
+let g:syntastic_always_populate_loc_list=0
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_aggregate_errors=0
 "}}
 " Tagbar"{{
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -720,7 +718,7 @@ call StripTrailingWhitespace()
 
 set background=dark
 let g:solarized_termtrans=1
-color gruvbox
+color distinguished
 
 "}}
 " Instead of reverting the cursor to the last position in the buffer, we"{{
