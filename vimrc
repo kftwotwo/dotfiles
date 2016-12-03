@@ -498,8 +498,13 @@ if has('autocmd')
 endif
 "}}
 "" Copy/Paste/Cut"{{
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
+
+if has('clipboard')
+  if has('unnamedplus')  " When possible use + register for copy-paste
+    set clipboard=unnamed,unnamedplus
+  else         " On mac and Windows, use * register for copy-paste
+    set clipboard=unnamed
+  endif
 endif
 
 if has('macunix')
@@ -544,32 +549,41 @@ nnoremap <Leader>o :.Gbrowse<CR>
 
 "}}
 " erlang"{{
+
 let erlang_folding = 1
 let erlang_show_errors = 1
+
 "}}
 " html"{{
-" for html files, 2 spaces
+
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
 "}}
 " javascript"{{
+
 let g:javascript_enable_domhtmlcss = 1
+
 "}}
 " vim-javascript"{{
+
 augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
 augroup END
+
 "}}
 " python"{{
-" vim-python
+
 augroup vimrc-python
   autocmd!
   autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
         \ formatoptions+=croq softtabstop=4 smartindent
         \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
+
 "}}
 " jedi-vim"{{
+
 let g:jedi#popup_on_dot = 0
 let g:jedi#goto_assignments_command = "<leader>g"
 let g:jedi#goto_definitions_command = "<leader>d"
@@ -579,14 +593,20 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
+
 "}}
 " syntastic"{{
+
 let g:syntastic_python_checkers=['python', 'flake8']
+
 "}}
 " vim-airline"{{
+
 let g:airline#extensions#virtualenv#enabled = 1
+
 "}}
 " ruby"{{
+
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
@@ -607,6 +627,7 @@ let g:tagbar_type_ruby = {
       \ 'F:singleton methods'
       \ ]
       \ }
+
 "}}
 " RSpec.vim mappings"{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
@@ -671,6 +692,13 @@ else
   let g:airline_symbols.linenr = ''
 endif
 "}}
+
+" Show trailing whitespace as dots
+set list
+set listchars=""                  " Reset the listchars
+set listchars=tab:\ \             " a tab should display as "  ", trailing
+set listchars+=trail:.            " show trailing spaces as dots
+
 "" Strip Whitespaces"{{
 
 function! StripTrailingWhitespace()
@@ -700,3 +728,55 @@ color gruvbox
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 "}}
 "}}
+
+" Spacing
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
+
+let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+" Maps Alt-[h,j,k,l] to resizing a window split
+map <silent> <C-h> 2<C-w><
+map <silent> <C-j> 2<C-W>-
+map <silent> <C-k> 2<C-W>+
+map <silent> <C-l> 2<C-w>>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Tmux runner
+nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
+nnoremap <leader>rpry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rpry'}<cr>
+nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'pry'}<cr>
+nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+
+" Binding Pry Shortcut
+map ,bp orequire "pry"; binding.pry<ESC>
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"
+"#############################################
+"" Easier split navigation
+"#############################################
+
+"" Use ctrl-[hjkl] to select the active split!
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+"" Bufexplorer
+let g:bufExplorerShowNoName=1
