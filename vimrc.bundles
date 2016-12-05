@@ -2,9 +2,9 @@
 " vim: foldmarker={{,}} foldlevel=0 foldmethod=marker:
 "}}
 
-" Plug install packages"{{
+" Plug install packages
 "*****************************************************************************
-"" Base Packages"{{
+" Base Packages"{{
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -32,7 +32,11 @@ Plug 'christoomey/vim-tmux-runner'
 Plug 'mileszs/ack.vim'
 Plug 'godlygeek/tabular'
 Plug 'mbbill/undotree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'powerline/fonts'
 
+let g:airline_powerline_fonts = 1
 let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
 
 let g:make = 'gmake'
@@ -41,7 +45,7 @@ if system('uname -o') =~ '^GNU/'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 "}}
-"" Vim-Session""{{
+" Vim-Session""{{
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -57,30 +61,30 @@ endif
 
 Plug 'honza/vim-snippets'
 "}}
-"" Color"{{
+" Color"{{
 Plug 'tomasr/molokai'
 "}}
-"" elixir"{{
+" elixir"{{
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
 "}}
-"" html"{{
+" html"{{
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 "}}
-"" json"{{
+" json"{{
 Plug 'elzr/vim-json'
 "}}
-"" javascript"{{
+" javascript"{{
 Plug 'jelera/vim-javascript-syntax'
 "}}
-"" python"{{
+" python"{{
 Plug 'davidhalter/jedi-vim'
 "}}
-"" ruby"{{
+" ruby"{{
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -88,5 +92,4 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-"}}
 "}}

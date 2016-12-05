@@ -62,7 +62,7 @@
 
         " General {
         if count(g:spf13_bundle_groups, 'general')
-            Bundle 'scrooloose/nerdtree'
+            " Bundle 'scrooloose/nerdtree'
             Bundle 'tpope/vim-eunuch'
             Bundle 'altercation/vim-colors-solarized'
             Bundle 'spf13/vim-colors'
@@ -75,18 +75,18 @@
             Bundle 'terryma/vim-multiple-cursors'
             Bundle 'vim-scripts/sessionman.vim'
             Bundle 'matchit.zip'
-            "Bundle 'edsono/vim-matchit'
-            "Bundle 'ervandew/supertab'
-            "Bundle 'tpope/vim-unimpaired'
-            "Bundle 'sjl/gundo.vim'
-            "Bundle 'chrisbra/NrrwRgn'
-            "Bundle 'bronson/vim-trailing-whitespace'
-            Bundle 'vim-airline/vim-airline'
-            Bundle 'vim-airline/vim-airline-themes'
-            Bundle 'powerline/fonts'
+            Bundle 'edsono/vim-matchit'
+            Bundle 'ervandew/supertab'
+            Bundle 'tpope/vim-unimpaired'
+            Bundle 'sjl/gundo.vim'
+            Bundle 'chrisbra/NrrwRgn'
+            Bundle 'bronson/vim-trailing-whitespace'
+            " Bundle 'vim-airline/vim-airline'
+            " Bundle 'vim-airline/vim-airline-themes'
+            " Bundle 'powerline/fonts'
             Bundle 'bling/vim-bufferline'
             Bundle 'easymotion/vim-easymotion'
-            "Bundle 'Lokaltog/vim-easymotion.git'
+            Bundle 'Lokaltog/vim-easymotion.git'
             Bundle 'jistr/vim-nerdtree-tabs'
             Bundle 'flazz/vim-colorschemes'
             Bundle 'mbbill/undotree'
@@ -98,7 +98,7 @@
             Bundle 'kana/vim-textobj-indent'
             Bundle 'gcmt/wildfire.vim'
             Bundle 'airblade/vim-gitgutter'
-            "Bundle 'tpope/vim-git'
+            Bundle 'tpope/vim-git'
         endif
         " }
 

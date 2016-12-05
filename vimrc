@@ -208,15 +208,15 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
+
+"" Status bar"{{
+set laststatus=2
+"}}
 "}}
 
 "" Disable the blinking cursor."{{
 set gcr=a:blinkon0
 set scrolloff=3
-"}}
-
-"" Status bar"{{
-set laststatus=2
 "}}
 
 "" Use modeline overrides"{{
