@@ -1,8 +1,9 @@
+" Modeline and Notes"{{
 " vim: foldmarker={{,}} foldlevel=0 foldmethod=marker:
+"}}
 
-" Vim Plug Core""{{
+" Vim Plug Core"{{
 "*****************************************************************************
-
 if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
@@ -22,6 +23,7 @@ endif
 call plug#begin(expand('~/.vim/plugged'))
 
 "}}
+
 " File Directories"{{
 "*****************************************************************************
 
@@ -61,8 +63,10 @@ endfunction
 call InitializeDirectories()
 
 "}}
+
 " Plug install packages"{{
 "*****************************************************************************
+"" Base Packages"{{
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -98,8 +102,8 @@ if system('uname -o') =~ '^GNU/'
   let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
-
-"" Vim-Session"
+"}}
+"" Vim-Session""{{
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -114,35 +118,31 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
-
-"" Color
+"}}
+"" Color"{{
 Plug 'tomasr/molokai'
 "}}
-" Custom bundles"{{
-"*****************************************************************************
-
-" elixir
+"" elixir"{{
 Plug 'elixir-lang/vim-elixir'
 Plug 'carlosgaldino/elixir-snippets'
-
-" html
+"}}
+"" html"{{
 Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
-
-" json
+"}}
+"" json"{{
 Plug 'elzr/vim-json'
-
-" javascript
+"}}
+"" javascript"{{
 Plug 'jelera/vim-javascript-syntax'
-
-" python
+"}}
+"" python"{{
 Plug 'davidhalter/jedi-vim'
-
-" ruby
-
+"}}
+"" ruby"{{
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-projectionist'
@@ -150,8 +150,9 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
-
 "}}
+"}}
+
 "" Include user's extra bundle"{{
 "*****************************************************************************
 if filereadable(expand("~/.vimrc.local.bundles"))
@@ -163,6 +164,7 @@ call plug#end()
 " Required:
 filetype plugin indent on
 "}}
+
 " Basic Setup"{{
 "*****************************************************************************"
 " Encoding"{{
@@ -214,6 +216,7 @@ let g:session_autosave = "no"
 let g:session_command_aliases = 1
 "}}
 "}}
+
 "" Visual Settings"{{
 "*****************************************************************************
 syntax on
@@ -295,13 +298,16 @@ if &term =~ '256color'
   set t_ut=
 endif
 "}}
+
 "" Disable the blinking cursor."{{
 set gcr=a:blinkon0
 set scrolloff=3
 "}}
+
 "" Status bar"{{
 set laststatus=2
 "}}
+
 "" Use modeline overrides"{{
 set modeline
 set modelines=10
@@ -316,6 +322,7 @@ if exists("*fugitive#statusline")
   set statusline+=%fugitive#statusline()
 endif
 "}}
+
 " vim-airline"{{
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#syntastic#enabled = 1
@@ -324,6 +331,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 "}}
+
 "" Abbreviations"{{
 "*****************************************************************************
 "" no one is really happy until you have this shortcuts"{{
@@ -383,6 +391,7 @@ if !exists('*s:setupWrapping')
 endif
 "}}
 "}}
+
 "" Autocmd Rules"{{
 "*****************************************************************************
 "" The PC is fast enough, do syntax highlight syncing from start"{{
@@ -413,6 +422,7 @@ augroup END
 set autoread
 "}}
 "}}
+
 "" Mappings"{{
 "*****************************************************************************
 "" Split"{{
@@ -540,6 +550,7 @@ vnoremap K :m '<-2<CR>gv=gv
 nnoremap <Leader>o :.Gbrowse<CR>
 "}}
 "}}
+
 "" Custom configs"{{
 "*****************************************************************************
 " elixir"{{
@@ -649,9 +660,9 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 "}}
 "}}
+
 "" Convenience variables"{{
 "*****************************************************************************
-
 " vim-airline"{{
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -689,13 +700,12 @@ else
   let g:airline_symbols.linenr = ''
 endif
 "}}
-
-" Show trailing whitespace as dots
+" Show trailing whitespace as dots"{{
 set list
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing
 set listchars+=trail:.            " show trailing spaces as dots
-
+"}}
 "" Strip Whitespaces"{{
 
 function! StripTrailingWhitespace()
@@ -726,54 +736,62 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 "}}
 "}}
 
-" Spacing
+" Spacing"{{
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
 
 let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
+"}}
 
-" RSpec.vim mappings
+" RSpec.vim mappings"{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+"}}
 
-" Maps Alt-[h,j,k,l] to resizing a window split
+" Maps Alt-[h,j,k,l] to resizing a window split"{{
 map <silent> <C-h> 2<C-w><
 map <silent> <C-j> 2<C-W>-
 map <silent> <C-k> 2<C-W>+
 map <silent> <C-l> 2<C-w>>
+"}}
 
-" automatically rebalance windows on vim resize
+" automatically rebalance windows on vim resize"{{
 autocmd VimResized * :wincmd =
+"}}
 
-" zoom a vim pane, <C-w>= to re-balance
+" zoom a vim pane, <C-w>= to re-balance"{{
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+"}}
 
-" Tmux runner
+" Tmux runner"{{
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
 nnoremap <leader>rpry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rpry'}<cr>
 nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'pry'}<cr>
 nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
+"}}
 
-" Binding Pry Shortcut
+" Binding Pry Shortcut"{{
 map ,bp orequire "pry"; binding.pry<ESC>
+"}}
 
-" Add spaces after comment delimiters by default
+" Add spaces after comment delimiters by default"{{
 let g:NERDSpaceDelims = 1
-"
-"#############################################
-"" Easier split navigation
-"#############################################
+"}}
 
-"" Use ctrl-[hjkl] to select the active split!
+"" Easier split navigation"{{
+"#############################################
+"" Use ctrl-[hjkl] to select the active split!"{{
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-"" Bufexplorer
+"}}
+"" Bufexplorer"{{
 let g:bufExplorerShowNoName=1
+"}}
+"}}

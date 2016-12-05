@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
 "
 "   This is the personal .vimrc.bundles file of Duane M. Moody
 "   While much of it is beneficial for general use, I would
@@ -188,7 +188,6 @@
             Bundle 'tpope/vim-rails'
             Bundle 'tpope/vim-bundler'
             Bundle 'thoughtbot/vim-rspec'
-            "Bundle 'skwp/vim-rspec'
             Bundle 'skalnik/vim-vroom'
             "Bundle 'cakebaker/scss-syntax.vim'
             "Bundle 'depuracao/vim-rdoc'
