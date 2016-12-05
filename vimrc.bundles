@@ -1,0 +1,92 @@
+" Modeline and Notes"{{
+" vim: foldmarker={{,}} foldlevel=0 foldmethod=marker:
+"}}
+
+" Plug install packages"{{
+"*****************************************************************************
+"" Base Packages"{{
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-scripts/grep.vim'
+Plug 'vim-scripts/CSApprox'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'Raimondi/delimitMate'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'Yggdroot/indentLine'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'romainl/vim-qf'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'skalnik/vim-vroom'
+Plug 'benmills/vimux'
+Plug 'jgdavey/tslime.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'mileszs/ack.vim'
+Plug 'godlygeek/tabular'
+Plug 'mbbill/undotree'
+
+let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+  let g:make = 'make'
+endif
+Plug 'Shougo/vimproc.vim', {'do': g:make}
+"}}
+"" Vim-Session""{{
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+if v:version >= 703
+  Plug 'Shougo/vimshell.vim'
+endif
+
+if v:version >= 704
+  "" Snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'FelikZ/ctrlp-py-matcher'
+endif
+
+Plug 'honza/vim-snippets'
+"}}
+"" Color"{{
+Plug 'tomasr/molokai'
+"}}
+"" elixir"{{
+Plug 'elixir-lang/vim-elixir'
+Plug 'carlosgaldino/elixir-snippets'
+"}}
+"" html"{{
+Plug 'amirh/HTML-AutoCloseTag'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'gorodinskiy/vim-coloresque'
+Plug 'tpope/vim-haml'
+Plug 'mattn/emmet-vim'
+"}}
+"" json"{{
+Plug 'elzr/vim-json'
+"}}
+"" javascript"{{
+Plug 'jelera/vim-javascript-syntax'
+"}}
+"" python"{{
+Plug 'davidhalter/jedi-vim'
+"}}
+"" ruby"{{
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
+Plug 'thoughtbot/vim-rspec'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-bundler'
+"}}
+"}}
