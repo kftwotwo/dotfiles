@@ -79,6 +79,7 @@ filetype plugin indent on
 " Basic Setup"{{
 "*****************************************************************************"
 " Encoding"{{
+"#############################################
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
@@ -88,16 +89,19 @@ set ttyfast
 
 "}}
 " Fix backspace indent"{{
+"#############################################
 
 set backspace=indent,eol,start
 
 "}}
 " Map leader to ,"{{
+"#############################################
 
 let mapleader=','
 
 "}}
 " set autowrite                       " Automatically write a file when leaving a modified buffer"{{
+"#############################################
 set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 set history=1000                    " Store a ton of history (default is 20)
@@ -107,12 +111,14 @@ set iskeyword-=#                    " '#' is an end of word designator
 set iskeyword-=-                    " '-' is an end of word designator
 "}}
 " Searching"{{
+"#############################################
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 "}}
 " Directories for swp files"{{
+"#############################################
 set nobackup
 set noswapfile
 
@@ -121,6 +127,7 @@ set showcmd
 set shell=/bin/sh
 "}}
 " session management"{{
+"#############################################
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
@@ -215,11 +222,13 @@ set laststatus=2
 "}}
 
 "" Disable the blinking cursor."{{
+"#############################################
 set gcr=a:blinkon0
 set scrolloff=3
 "}}
 
 "" Use modeline overrides"{{
+"#############################################
 set modeline
 set modelines=10
 
@@ -235,6 +244,7 @@ endif
 "}}
 
 " vim-airline"{{
+"#############################################
 let g:airline_theme = 'bubblegum'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
@@ -462,6 +472,16 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "}}
 "}}
 
+" Spacing"{{
+"#############################################
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
+
+let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
+"}}
+
 "" Custom configs"{{
 "*****************************************************************************
 " elixir"{{
@@ -647,16 +667,8 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 "}}
 "}}
 
-" Spacing"{{
-autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
-autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
-
-let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
-"}}
-
 " RSpec.vim mappings"{{
+"#############################################
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
@@ -664,6 +676,7 @@ map <Leader>a :call RunAllSpecs()<CR>
 "}}
 
 " Maps Alt-[h,j,k,l] to resizing a window split"{{
+"#############################################
 map <silent> <C-h> 2<C-w><
 map <silent> <C-j> 2<C-W>-
 map <silent> <C-k> 2<C-W>+
@@ -671,15 +684,18 @@ map <silent> <C-l> 2<C-w>>
 "}}
 
 " automatically rebalance windows on vim resize"{{
+"#############################################
 autocmd VimResized * :wincmd =
 "}}
 
 " zoom a vim pane, <C-w>= to re-balance"{{
+"#############################################
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 "}}
 
 " Tmux runner"{{
+"#############################################
 nnoremap <leader>irb :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'irb'}<cr>
 nnoremap <leader>rpry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'rpry'}<cr>
 nnoremap <leader>pry :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'pry'}<cr>
@@ -687,10 +703,12 @@ nnoremap <leader>osr :VtrOpenRunner {'orientation': 'h', 'percentage': 50}<cr>
 "}}
 
 " Binding Pry Shortcut"{{
+"#############################################
 map ,bp orequire "pry"; binding.pry<ESC>
 "}}
 
 " Add spaces after comment delimiters by default"{{
+"#############################################
 let g:NERDSpaceDelims = 1
 "}}
 
