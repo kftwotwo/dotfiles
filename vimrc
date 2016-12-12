@@ -266,6 +266,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev Ack Ack!
 "}}
 "" NERDTree configuration"{{
 let g:NERDTreeChDirMode=2
