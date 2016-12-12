@@ -1,474 +1,498 @@
-# airblade/vim-gitgutter
+# Common Vim Plugins
 
-https://github.com/airblade/vim-gitgutter
+## Yggdroot/indentLine
+http://vimawesome.com/plugin/indentline
 
-# altercation/vim-colors-solarized
+A vim plugin to display the indentation levels with thin vertical lines.
 
-https://github.com/altercation/vim-colors-solarized
+vim
 
-# amirh/HTML-AutoCloseTag
+## airblade/vim-gitgutter
+http://vimawesome.com/plugin/vim-gitgutter
 
-https://github.com/amirh/HTML-AutoCloseTag
+A vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks.
 
-# arnaud-lb/vim-php-namespace
+git
 
-https://github.com/arnaud-lb/vim-php-namespace
+## altercation/vim-colors-solarized
+http://vimawesome.com/plugin/vim-colors-solarized-ours
 
-# benmills/vimux
+Precision colorscheme for the vim text editor
 
-https://github.com/benmills/vimux
+theme
 
-# beyondwords/vim-twig
+## amirh/HTML-AutoCloseTag
+http://vimawesome.com/plugin/html-autoclosetag-looking-forward
 
-https://github.com/beyondwords/vim-twig
+Automatically closes HTML tags once you finish typeing them.
 
-# bling/vim-airline
+html
 
-https://github.com/bling/vim-airline
+## benmills/vimux
+http://vimawesome.com/plugin/vimux
 
-# bling/vim-bufferline
+Vim plugin to interact with tmux
 
-https://github.com/bling/vim-bufferline
+tmux
 
-User `:b <buffername>` to move to buffer.
+## carlosgaldino/elixir-snippets
+http://vimawesome.com/plugin/elixir-snippets
 
-# briancollins/vim-jst
+Shipmate snippets for Elixir
 
-https://github.com/briancollins/vim-jst
+elixir
 
-# cespare/vim-toml
+## christoomey/vim-tmux-navigator
+http://vimawesome.com/plugin/vim-tmux-navigator
 
-https://github.com/cespare/vim-toml
+Seamless navigation between tmux panes and vim splits
 
-# ctrlpvim/ctrlp.vim
+tmux
 
-https://github.com/ctrlpvim/ctrlp.vim
+## christoomey/vim-tmux-runner
+http://vimawesome.com/plugin/vim-tmux-runner-back-to-december
 
-## Basic Usage
-* Run `:CtrlP` or `:CtrlP [starting-directory]` to invoke CtrlP in find file mode.
-* Run `:CtrlPBuffer` or `:CtrlPMRU` to invoke CtrlP in find buffer or find MRU file mode.
-* Run `:CtrlPMixed` to search in Files, Buffers and MRU files at the same time.
+A simple, vimscript only, command runner for sending commands from vim to tmux.
 
-Check `:help ctrlp-commands` and `:help ctrlp-extensions` for other commands.
+tmux
 
-##### Once CtrlP is open:
-* Press `<F5>` to purge the cache for the current directory to get new files, remove deleted files and apply new ignore options.
-* Press `<c-f>` and `<c-b>` to cycle between modes.
-* Press `<c-d>` to switch to filename only search instead of full path.
-* Press `<c-r>` to switch to regexp mode.
-* Use `<c-j>`, `<c-k>` or the arrow keys to navigate the result list.
-* Use `<c-t>` or `<c-v>`, `<c-x>` to open the selected entry in a new tab or in a new split.
-* Use `<c-n>`, `<c-p>` to select the next/previous string in the prompt's history.
-* Use `<c-y>` to create a new file and its parent directories.
-* Use `<c-z>` to mark/unmark multiple files and `<c-o>` to open them.
+## ctrlpvim/ctrlp.vim
+http://vimawesome.com/plugin/ctrlp-vim-everything-has-changed
 
-Run `:help ctrlp-mappings` or submit `?` in CtrlP for more mapping help.
+Active fork of kien/ctrlp.vim--Fuzzy file, buffer, mru, tag, etc finder
 
-* Submit two or more dots `..` to go up the directory tree by one or multiple levels.
-* End the input string with a colon `:` followed by a command to execute it on the opening file(s):
-Use `:25` to jump to line 25.
-Use `:diffthis` when opening multiple files to run `:diffthis` on the first 4 files.
+vim
 
-## Basic Options
-* Change the default mapping and the default command to invoke CtrlP:
+## elixir-lang/vim-elixir
+http://vimawesome.com/plugin/vim-elixir-sparks-fly
 
-    ```vim
-    let g:ctrlp_map = '<c-p>'
-    let g:ctrlp_cmd = 'CtrlP'
-    ```
+Vim configuration files for Elixir
 
-* When invoked without an explicit starting directory, CtrlP will set its local working directory according to this variable:
+elixir
 
-    ```vim
-    let g:ctrlp_working_path_mode = 'ra'
-    ```
+## gorodinskiy/vim-coloresque
+http://vimawesome.com/plugin/vim-coloresque
 
-    `'c'` - the directory of the current file.  
-    `'a'` - the directory of the current file, unless it is a subdirectory of the cwd  
-    `'r'` - the nearest ancestor of the current file that contains one of these directories or files: `.git` `.hg` `.svn` `.bzr` `_darcs`  
-    `'w'` - modifier to "r": start search from the cwd instead of the current file's directory  
-    `0` or `''` (empty string) - disable this feature.
+css/less/sass/html color preview for vim.
 
-    If none of the default markers (`.git` `.hg` `.svn` `.bzr` `_darcs`) are present in a project, you can define additional ones with `g:ctrlp_root_markers`:
+syntax html
 
-    ```vim
-    let g:ctrlp_root_markers = ['pom.xml', '.p4ignore']
-    ```
-
-    If more than one mode is specified, they will be tried in order until a directory is located.
-
-* Exclude files and directories using Vim's `wildignore` and CtrlP's own `g:ctrlp_custom_ignore`. If a custom listing command is being used, exclusions are ignored:
-
-    ```vim
-    set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-    set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-    let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-    let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll)$',
-      \ 'link': 'some_bad_symbolic_links',
-      \ }
-    ```
-
-* Use a custom file listing command:
-
-    ```vim
-    let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-    let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
-    ```
-
-* Ignore files in `.gitignore`
-    
-    ```vim
-      let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-    ```
-
-Check `:help ctrlp-options` for other options.
-
-# easymotion/vim-easymotion
-
-https://github.com/easymotion/vim-easymotion
-
-# elzr/vim-json
-
-https://github.com/elzr/vim-json
-
-# ervandew/supertab
-
-https://github.com/ervandew/supertab
-
-# flazz/vim-colorschemes
-
-https://github.com/flazz/vim-colorschemes
-
-# gcmt/wildfire.vim
-
-https://github.com/gcmt/wildfire.vim
-
-# gmarik/vundle
-
-https://github.com/gmarik/vundle
-
-# godlygeek/tabular
-
-https://github.com/godlygeek/tabular
-
-# gorodinskiy/vim-coloresque
-
-https://github.com/gorodinskiy/vim-coloresque
-
-# groenewege/vim-less
-
-https://github.com/groenewege/vim-less
-
-# hail2u/vim-css3-syntax
-
+## hail2u/vim-css3-syntax
 https://github.com/hail2u/vim-css3-syntax
 
-# honza/vim-snippets
+Add CSS3 syntax support to Vim's build-in `syntax/css/vim`
 
-https://github.com/honza/vim-snippets
+syntax css
 
-# jgdavey/tslime.vim
+## honza/vim-snippets
+http://vimawesome.com/plugin/vim-snippets
 
-https://github.com/jgdavey/tslime.vim
+vim-snipmate defaults snippets (previously snipmate-snippets)
 
-# jiangmiao/auto-pairs
+snippets
 
-https://github.com/jiangmiao/auto-pairs
+## jgdavey/tslime.vim
+http://vimawesome.com/plugin/tslime-vim-if-this-was-a-movie
 
-# jistr/vim-nerdtree-tabs
+Send command from vim to a running tmux session
 
-https://github.com/jistr/vim-nerdtree-tabs
+tmux
 
-# kana/vim-textobj-indent
+## jistr/vim-nerdtree-tabs
+http://vimawesome.com/plugin/vim-nerdtree-tabs
 
-https://github.com/kana/vim-textobj-indent
+NERDTree and tabs together in Vim, painlessly
 
-# kana/vim-textobj-user
+vim interface
 
-https://github.com/kana/vim-textobj-user
+## jlanzarotta/bufexplorer
+http://vimawesome.com/plugin/bufexplorer
 
-# kchmck/vim-coffee-script
+BufExplorer Plugin for Vim
 
-https://github.com/kchmck/vim-coffee-script
+vim interface
 
-# klen/python-mode
+## majutsushi/tagbar
+http://vimawesome.com/plugin/tagbar
 
-https://github.com/klen/python-mode
+Vim plugin that displays tags in a window, ordered by scope
 
-# luochen1990/rainbow
+vim interface
 
-https://github.com/luochen1990/rainbow
-
-# majutsushi/tagbar
-
-https://github.com/majutsushi/tagbar
-
-# MarcWeber/vim-addon-mw-utils
-
-https://github.com/MarcWeber/vim-addon-mw-utils
-
-# matchit.zip
-
-https://github.com/matchit.zip
-
-# mattn/emmet-vim
-
+## mattn/emmet-vim
 https://github.com/mattn/emmet-vim
 
-# mattn/gist-vim
+Emmet-vim is a vim plug-in which provides supprt for expanding abbreviations similar to emmet
 
-https://github.com/mattn/gist-vim
+syntax
 
-# mattn/webapi-vim
+## mileszs/ack.vim
+http://vimawesome.com/plugin/ack-vim
 
-https://github.com/mattn/webapi-vim
+Vim plugin for the CLI script 'ack'
 
-# mbbill/undotree
+vim interface
 
-https://github.com/mbbill/undotree
+## pbrisbin/vim-mkdir
+http://vimawesome.com/plugin/vim-mkdir
 
-# mhinz/vim-signify
+Automatically create any non-existant directories before writing the buffer
 
-https://github.com/mhinz/vim-signify
+vim interface
 
-# mileszs/ack.vim
-
-https://github.com/mileszs/ack.vim
-
-# osyo-manga/vim-over
-
-https://github.com/osyo-manga/vim-over
-
-# pangloss/vim-javascript
-
-https://github.com/pangloss/vim-javascript
-
-# pbrisbin/vim-mkdir
-
-https://github.com/pbrisbin/vim-mkdir
-
-# powerline/fonts
-
-https://github.com/powerline/fonts
-
-# python_match.vim
-
-https://github.com/python_match.vim
-
-# pythoncomplete
-
-https://github.com/pythoncomplete
-
-# quentindecock/vim-cucumber-align-pipes
-
-https://github.com/quentindecock/vim-cucumber-align-pipes
-
-# reedes/vim-litecorrect
-
-https://github.com/reedes/vim-litecorrect
-
-# reedes/vim-textobj-quote
-
-https://github.com/reedes/vim-textobj-quote
-
-# reedes/vim-textobj-sentence
-
-https://github.com/reedes/vim-textobj-sentence
-
-# reedes/vim-wordy
-
-https://github.com/reedes/vim-wordy
-
-# rhysd/conflict-marker.vim
-
-https://github.com/rhysd/conflict-marker.vim
-
-# rust-lang/rust.vim
-
-https://github.com/rust-lang/rust.vim
-
-# saltstack/salt-vim
-
-https://github.com/saltstack/salt-vim
-
-# scrooloose/nerdcommenter
-
-https://github.com/scrooloose/nerdcommenter
-
-## Usage  
-
-The following key mappings are provided by default (there is also a menu 
-provided that contains menu items corresponding to all the below mappings): 
-
-Most of the following mappings are for normal/visual mode only. The |NERDComInsertComment| mapping is for insert mode only. 
-
-**[count]\<leader\>cc |NERDComComment|**  
-Comment out the current line or text selected in visual mode. 
-
-
-**[count]\<leader\>cn |NERDComNestedComment|**  
-Same as \<leader\>cc but forces nesting. 
-
-
-**[count]\<leader\>c\<space\> |NERDComToggleComment|**  
-Toggles the comment state of the selected line(s). If the topmost selected 
-line is commented, all selected lines are uncommented and vice versa. 
-
-
-**[count]\<leader\>cm |NERDComMinimalComment|**  
-Comments the given lines using only one set of multipart delimiters. 
-
-
-**[count]\<leader\>ci |NERDComInvertComment|**  
-Toggles the comment state of the selected line(s) individually. 
-
-
-**[count]\<leader\>cs |NERDComSexyComment|**  
-Comments out the selected lines ``sexily'' 
-
-
-**[count]\<leader\>cy |NERDComYankComment|**  
-Same as \<leader\>cc except that the commented line(s) are yanked first. 
-
-
-**\<leader\>c$ |NERDComEOLComment|**  
-Comments the current line from the cursor to the end of line. 
-
-
-**\<leader\>cA |NERDComAppendComment|**  
-Adds comment delimiters to the end of line and goes into insert mode between 
-them. 
-
-
-**|NERDComInsertComment|**  
-Adds comment delimiters at the current cursor position and inserts between. 
-Disabled by default. 
-
-
-**\<leader\>ca |NERDComAltDelim|**  
-Switches to the alternative set of delimiters. 
-
-
-**[count]\<leader\>cl**  
-**[count]\<leader\>cb    |NERDComAlignedComment|**  
-Same as |NERDComComment| except that the delimiters are aligned down the 
-left side (\<leader\>cl) or both sides (\<leader\>cb). 
-
-
-**[count]\<leader\>cu |NERDComUncommentLine|**  
-Uncomments the selected line(s). 
-
-# scrooloose/nerdtree
-
+## scrooloose/nerdtree
 https://github.com/scrooloose/nerdtree
 
-# scrooloose/syntastic
+A tree explorer plugin for vim
 
-https://github.com/scrooloose/syntastic
+vim interface
 
-# Shougo/neocomplete.vim.git
+## scrooloose/syntastic
+http://vimawesome.com/plugin/syntastic
 
-https://github.com/Shougo/neocomplete.vim.git
+Syntax checking hacks for vim
 
-# Shougo/neosnippet
+syntax
 
-https://github.com/Shougo/neosnippet
+## skalnik/vim-vroom
+http://vimawesome.com/plugin/vim-vroom
 
-# Shougo/neosnippet-snippets
+Run your Ruby tests! Supports RSpec, Test::Unit/MiniTest, and Cucumber.
 
-https://github.com/Shougo/neosnippet-snippets
+ruby
 
-# skalnik/vim-vroom
+## thoughtbot/vim-rspec
+http://vimawesome.com/plugin/vim-rspec-red
 
-https://github.com/skalnik/vim-vroom
+Run Rspec specs from Vim
 
-# spf13/PIV
+ruby
 
-https://github.com/spf13/PIV
-
-# spf13/vim-colors
-
-https://github.com/spf13/vim-colors
-
-# spf13/vim-preview
-
-https://github.com/spf13/vim-preview
-
-# tacahiroy/ctrlp-funky
-
-https://github.com/tacahiroy/ctrlp-funky
-
-# terryma/vim-multiple-cursors
-
-https://github.com/terryma/vim-multiple-cursors
-
-# thoughtbot/vim-rspec
-
-https://github.com/thoughtbot/vim-rspec
-
-# tomtom/tlib_vim
-
-https://github.com/tomtom/tlib_vim
-
-# tpope/vim-abolish.git
-
-https://github.com/tpope/vim-abolish.git
-
-# tpope/vim-bundler
-
+## tpope/vim-bundler
 https://github.com/tpope/vim-bundler
 
-# tpope/vim-commentary
+Lightweight support for Ruby's bundler
 
+ruby
+
+## tpope/vim-commentary
 https://github.com/tpope/vim-commentary
 
-# tpope/vim-cucumber
+Comment stuff out
 
-https://github.com/tpope/vim-cucumber
+vim interface
 
-# tpope/vim-fugitive
-
+## tpope/vim-fugitive
 https://github.com/tpope/vim-fugitive
 
-# tpope/vim-haml
+Git wrapper so awesome
 
+git
+
+## tpope/vim-haml
 https://github.com/tpope/vim-haml
 
-# tpope/vim-markdown
+Vim runtime files for Haml, Sass, and SCSS
 
-https://github.com/tpope/vim-markdown
+ruby
 
-# tpope/vim-rails
+## tpope/vim-rails
+https://github.com/tpope/vim-rail://github.com/tpope/vim-rails
 
-https://github.com/tpope/vim-rails
+Ruby on Rails power tools
 
-# tpope/vim-repeat
+ruby
 
-https://github.com/tpope/vim-repeat
+## vim-airline/vim-airline
+http://vimawesome.com/plugin/vim-airline-superman
 
-# tpope/vim-surround
+lean & mean status/tabline for vim that's light as air
 
-https://github.com/tpope/vim-surround
+vim themes
 
-# vim-ruby/vim-ruby
+## vim-airline/vim-airline-themes
+http://vimawesome.com/plugin/vim-airline-themes
 
-https://github.com/vim-ruby/vim-ruby
+A collection of themes for vim-airline
 
-# vim-scripts/restore_view.vim
+vim themes
 
-https://github.com/vim-scripts/restore_view.vim
+## vim-ruby/vim-ruby
+http://vimawesome.com/plugin/vim-ruby
 
-# vim-scripts/sessionman.vim
+Vim/Ruby congfiguration files
 
-https://github.com/vim-scripts/sessionman.vim
+ruby
 
-# Yggdroot/indentLine
+## elzr/vim-json
+https://github.com/elzr/vim-json
 
-https://github.com/Yggdroot/indentLine
+A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. Pathogen-friendly.
 
-# yssource/python.vim
+json syntax
 
-https://github.com/yssource/python.vim
+## godlygeek/tabular
+http://vimawesome.com/plugin/tabular
+
+Vim script for text filtering and alignment.
+
+vim
+
+---
+# New Only Vim Plugins
+
+## FelikZ/ctrlp-py-matcher
+http://vimawesome.com/plugin/ctrlp-py-matcher
+
+Fast vim CtrlP matcher based on Python
+
+python
+
+## raimondi/delimitmate
+http://vimawesome.com/plugin/delimitmate
+
+Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
+
+vim
+
+## shougo/vimproc.vim
+http://vimawesome.com/plugin/vimproc-vim
+
+Interactive command execution in Vim
+
+shell
+
+## shougo/vimshell.vim
+http://vimawesome.com/plugin/vimshell-vim
+
+Powerful shell implemented by vim
+
+shell
+
+## SirVer/ultisnips
+http://vimawesome.com/plugin/ultisnips
+
+UltiSnips is the ultimate solution for snippets in Vim. It has tons of features and is very fast.
+
+vim
+
+## bronson/vim-trailing-whitespace
+https://github.com/bronson/vim-trailing-whitespace
+
+Highlights trailing whitespace in red and provides `:FixWhitespace` to fix it.
+
+vim
+
+## davidhalter/jedi-vim
+http://vimawesome.com/plugin/jedi-vim
+
+Using the jedi autocompletion library for vim.
+
+python
+
+## ecomba/vim-ruby-refactoring
+http://vimawesome.com/plugin/vim-ruby-refactoring
+
+Refactoring tool for Ruby in vim
+
+ruby
+
+## jelera/vim-javascript-syntax
+https://github.com/jelera/vim-javascript-syntax
+
+Enhanced javascript syntax file for Vim
+
+javascript
+
+## romainl/vim-qf
+http://vimawesome.com/plugin/vim-qf
+
+Tame the quickfix window
+
+vim
+
+## sheerun/vim-polyglot
+http://vimawesome.com/plugin/vim-polyglot
+
+A language pack for Vim.
+
+syntax
+
+## tomasr/molokai
+http://vimawesome.com/plugin/molokai
+
+Molokai color scheme for Vim
+
+theme
+
+## tpope/vim-projectionist
+http://vimawesome.com/plugin/vim-projectionist
+
+Projectionist provides granular project configuration using "projections". 
+
+vim
+
+## tpope/vim-rake
+https://github.com/tpope/vim-rake
+
+rake.vim: it's like rails.vim without the rails
+
+ruby
+
+## vim-scripts/CSApprox
+https://github.com/vim-scripts/csapprox
+
+Make gvim-only colorschemes work transparently in terminal vim
+
+vim
+
+## vim-scripts/grep.vim
+https://github.com/vim-scripts/grep.vim
+
+Grep search tolls integration with vim
+
+vim
+
+## xolox/vim-misc
+http://vimawesome.com/plugin/vim-misc
+
+Vim plugin support
+
+vim
+
+## xolox/vim-session
+https://github.com/xolox/vim-session
+
+Extended session management for Vim
+
+vim
+
+---
+
+# Possible Add
+
+## easymotion/vim-easymotion
+https://github.com/easymotion/vim-easymotion
+
+Vim motions on speed!
+
+vim
+
+## bling/vim-bufferline
+http://vimawesome.com/plugin/vim-bufferline
+
+Super simple vim plugin to show the list of buffers in the command bar.
+
+vim
+
+---
+# Old Only Vim Plugins
+
+## MarcWeber/vim-addon-mw-utils
+http://vimawesome.com/plugin/vim-addon-mw-utils
+
+interpret a file by function and cache file automatically
+
+vim
+
+## briancollins/vim-jst
+http://vimawesome.com/plugin/vim-jst
+
+A vim plugin for highlighting and indenting JST/EJS syntax.
+
+syntax
+
+## flazz/vim-colorschemes
+http://vimawesome.com/plugin/vim-colorschemes-sweeter-than-fiction
+
+one stop shop for vim colorschemes.
+
+themes
+
+## garbas/vim-snipmate
+http://vimawesome.com/plugin/vim-snipmate-mine
+
+SnipMate aims to provide support for textual snippets, similar to TextMate or other Vim plugins like UltiSnips.
+
+syntax
+
+## gcmt/wildfire.vim
+http://vimawesome.com/plugin/wildfire-vim
+
+With Wildfire you can quickly select the closest text object among a group of candidates.
+
+vim
+
+## gmarik/vundle
+https://github.com/VundleVim/Vundle.vim
+
+Vundle is short for Vim bundle and is a Vim plugin manager.
+
+vim
+
+## groenewege/vim-less
+## jiangmiao/auto-pairs
+https://github.com/jiangmiao/auto-pairs
+
+Vim plugin, insert or delete brackets, parens, quotes in pair
+
+vim
+
+## kana/vim-textobj-indent
+https://github.com/kana/vim-textobj-indent
+
+Text objects for indented blocks of lines
+
+vim
+
+## kana/vim-textobj-user
+https://github.com/kana/vim-textobj-use://github.com/kana/vim-textobj-user
+
+vim-textobj-user is a Vim plugin to create your own text objects without pain
+
+vim
+
+## kchmck/vim-coffee-script
+https://github.com/kchmck/vim-coffee-script
+
+offeeScript support for vim
+
+syntax
+
+## klen/python-mode
+## luochen1990/rainbow
+## matchit.zip
+## mattn/gist-vim
+## mattn/webapi-vim
+## mattreduce/vim-mix
+## mbbill/undotree
+## mhinz/vim-signify
+## mmalecki/vim-node.js
+## mustache/vim-mustache-handlebars
+## osyo-manga/vim-over
+## pangloss/vim-javascript
+## powerline/fonts
+## python_match.vim
+## pythoncomplete
+## quentindecock/vim-cucumber-align-pipes
+## reedes/vim-litecorrect
+## reedes/vim-textobj-quote
+## reedes/vim-textobj-sentence
+## reedes/vim-wordy
+## rhysd/conflict-marker.vim
+## rodjek/vim-puppet
+## scrooloose/nerdcommenter
+## spf13/vim-colors
+## spf13/vim-preview
+## tacahiroy/ctrlp-funky
+## terryma/vim-multiple-cursors
+## tomtom/tlib_vim
+## tpope/vim-abolish.git
+## tpope/vim-cucumber
+## tpope/vim-endwise
+## tpope/vim-eunuch
+## tpope/vim-markdown
+## tpope/vim-repeat
+## tpope/vim-surround
+## vim-scripts/sessionman.vim
+## yssource/python.vim
