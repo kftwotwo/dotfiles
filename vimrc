@@ -124,7 +124,7 @@ set noswapfile
 
 set fileformats=unix,dos,mac
 set showcmd
-set shell=/bin/sh
+set shell=/bin/zsh
 "}}
 " session management"{{
 "#############################################
@@ -199,21 +199,6 @@ else
   let g:indentLine_concealcursor = 0
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-
-endif
-
-
-if &term =~ '256color'
-  set t_ut=
 endif
 
 "" Status bar"{{
@@ -241,16 +226,6 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 if exists("*fugitive#statusline")
   set statusline+=%fugitive#statusline()
 endif
-"}}
-
-" vim-airline"{{
-"#############################################
-let g:airline_theme = 'bubblegum'
-let g:airline#extensions#syntastic#enabled = 1
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline_skip_empty_sections = 1
 "}}
 
 " Abbreviations"{{
@@ -542,11 +517,6 @@ let g:jedi#smart_auto_mappings = 0
 let g:syntastic_python_checkers=['python', 'flake8']
 
 "}}
-" vim-airline"{{
-
-let g:airline#extensions#virtualenv#enabled = 1
-
-"}}
 " ruby"{{
 
 let g:rubycomplete_buffer_loading = 1
@@ -571,13 +541,13 @@ let g:tagbar_type_ruby = {
       \ }
 
 "}}
-" RSpec.vim mappings"{{
+" rspec.vim mappings"{{
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 "}}
-" Ruby refactory"{{
+" ruby refactory"{{
 nnoremap <leader>rap  :RAddParameter<cr>
 nnoremap <leader>rcpc :RConvertPostConditional<cr>
 nnoremap <leader>rel  :RExtractLet<cr>
@@ -588,7 +558,10 @@ vnoremap <leader>rrlv :RRenameLocalVariable<cr>
 vnoremap <leader>rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>rem  :RExtractMethod<cr>
 "}}
-"" Include user's local vim config"{{
+" markdown"{{
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"}}
+" include user's local vim config"{{
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
@@ -601,6 +574,14 @@ endif
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+let g:airline_theme = 'bubblegum'
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 
 if !exists('g:airline_powerline_fonts')
   let g:airline#extensions#tabline#left_sep = ' '
@@ -634,13 +615,13 @@ else
   let g:airline_symbols.linenr = ''
 endif
 "}}
-" Show trailing whitespace as dots"{{
+" show trailing whitespace as dots"{{
 set list
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing
 set listchars+=trail:.            " show trailing spaces as dots
 "}}
-"" Strip Whitespaces"{{
+" strip whitespaces"{{
 
 function! StripTrailingWhitespace()
   " Preparation: save last search, and cursor position.
@@ -657,25 +638,17 @@ endfunction
 call StripTrailingWhitespace()
 
 "}}
-" Colors"{{
+" colors"{{
 
 set background=dark
 let g:solarized_termtrans=1
 color distinguished
 
 "}}
-" Instead of reverting the cursor to the last position in the buffer, we"{{
+" instead of reverting the cursor to the last position in the buffer, we"{{
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 "}}
-"}}
-
-" RSpec.vim mappings"{{
-"#############################################
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 "}}
 
 " Maps Alt-[h,j,k,l] to resizing a window split"{{

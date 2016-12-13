@@ -4,7 +4,7 @@
 
 " Plug install packages
 "*****************************************************************************
-" Base Packages"{{
+" base packages"{{
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -45,23 +45,10 @@ if system('uname -o') =~ '^GNU/'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 "}}
-" Vim-Session""{{
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
-endif
-
-if v:version >= 704
-  "" Snippets
-  Plug 'SirVer/ultisnips'
-  Plug 'FelikZ/ctrlp-py-matcher'
-endif
-
-Plug 'honza/vim-snippets'
+" coffeescript"{{
+Plug 'kchmck/vim-coffee-script'
 "}}
-" Color"{{
+" color"{{
 Plug 'tomasr/molokai'
 "}}
 " elixir"{{
@@ -75,11 +62,20 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 "}}
+" javascript"{{
+Plug 'jelera/vim-javascript-syntax'
+"}}
 " json"{{
 Plug 'elzr/vim-json'
 "}}
-" javascript"{{
-Plug 'jelera/vim-javascript-syntax'
+" markdown"{{
+Plug 'tpope/vim-markdown'
+"}}
+" node"{{
+Plug 'mmalecki/vim-node.js'
+"}}
+" puppet"{{
+Plug 'rodjek/vim-puppet'
 "}}
 " python"{{
 Plug 'davidhalter/jedi-vim'
@@ -94,12 +90,19 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 "}}
-" puppet"{{
-Plug 'rodjek/vim-puppet'
-"}}
-" coffeescript"{{
-Plug 'kchmck/vim-coffee-script'
-"}}
-" node"{{
-Plug 'mmalecki/vim-node.js'
+" vim-session"{{
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+if v:version >= 703
+  Plug 'Shougo/vimshell.vim'
+endif
+
+if v:version >= 704
+  "" Snippets
+  Plug 'SirVer/ultisnips'
+  Plug 'FelikZ/ctrlp-py-matcher'
+endif
+
+Plug 'honza/vim-snippets'
 "}}
