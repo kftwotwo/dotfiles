@@ -135,7 +135,7 @@ let g:session_command_aliases = 1
 "}}
 "}}
 
-"" Visual Settings"{{
+" Visual Settings"{{
 "*****************************************************************************
 syntax on
 set ruler
@@ -221,13 +221,13 @@ set laststatus=2
 "}}
 "}}
 
-"" Disable the blinking cursor."{{
+" Disable the blinking cursor."{{
 "#############################################
 set gcr=a:blinkon0
 set scrolloff=3
 "}}
 
-"" Use modeline overrides"{{
+" Use modeline overrides"{{
 "#############################################
 set modeline
 set modelines=10
@@ -253,7 +253,7 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 "}}
 
-"" Abbreviations"{{
+" Abbreviations"{{
 "*****************************************************************************
 "" no one is really happy until you have this shortcuts"{{
 cnoreabbrev W! w!
@@ -314,7 +314,7 @@ endif
 "}}
 "}}
 
-"" Autocmd Rules"{{
+" Autocmd Rules"{{
 "*****************************************************************************
 "" The PC is fast enough, do syntax highlight syncing from start"{{
 augroup vimrc-sync-fromstart
@@ -345,7 +345,7 @@ set autoread
 "}}
 "}}
 
-"" Mappings"{{
+" Mappings"{{
 "*****************************************************************************
 "" Split"{{
 noremap <Leader>h :<C-u>split<CR>
@@ -483,7 +483,7 @@ autocmd Filetype erb setlocal ts=2 sts=2 sw=2 expandtab
 let g:rspec_command = "VtrSendCommandToRunner! rspec {spec}"
 "}}
 
-"" Custom configs"{{
+" Custom configs"{{
 "*****************************************************************************
 " elixir"{{
 
@@ -593,7 +593,7 @@ endif
 "}}
 "}}
 
-"" Convenience variables"{{
+" Convenience variables"{{
 "*****************************************************************************
 " vim-airline"{{
 if !exists('g:airline_symbols')
@@ -713,7 +713,7 @@ map ,bp orequire "pry"; binding.pry<ESC>
 let g:NERDSpaceDelims = 1
 "}}
 
-"" Easier split navigation"{{
+" Easier split navigation"{{
 "#############################################
 "" Use ctrl-[hjkl] to select the active split!"{{
 nnoremap <C-J> <C-W><C-J>
