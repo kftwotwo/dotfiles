@@ -99,3 +99,6 @@ Plug 'rodjek/vim-puppet'
 " coffeescript"{{
 Plug 'kchmck/vim-coffee-script'
 "}}
+" node"{{
+Plug 'mmalecki/vim-node.js'
+"}}
