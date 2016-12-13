@@ -92,6 +92,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
 "}}
 " puppet"{{
 Plug 'rodjek/vim-puppet'
