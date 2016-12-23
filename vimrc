@@ -133,6 +133,11 @@ let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
 "}}
+" colors"{{
+
+set background=dark
+
+"}}
 "}}
 
 " Visual Settings"{{
@@ -640,7 +645,7 @@ call StripTrailingWhitespace()
 "}}
 " colors"{{
 
-set background=dark
+" set background=dark
 let g:solarized_termtrans=1
 color distinguished
 
