@@ -258,6 +258,7 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 let g:NERDTreeShowLineNumbers = 0
 let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeShowHidden = 1
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
@@ -488,10 +489,10 @@ let g:javascript_enable_domhtmlcss = 1
 "}}
 " vim-javascript"{{
 
-augroup vimrc-javascript
-  autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
-augroup END
+" augroup vimrc-javascript
+"   autocmd!
+"   autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4 smartindent
+" augroup END
 
 "}}
 " python"{{
