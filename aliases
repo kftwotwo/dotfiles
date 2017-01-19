@@ -46,7 +46,12 @@ alias ropry='bundle exec pry -r ./config/application'
 alias tmx='tmux attach -t base || tmux new -s base'
 
 # vim
-alias vun='vim +BundleInstall! +BundleClean +q'
+alias vpinstall='vim +PlugInstall +VimEnter +qall'
+alias vpclean='vim +PlugClean +VimEnter +qall'
+alias vpupdate='vim +PlugUpdate +qall'
+alias vpupgrade='vim +PlugUpgrade +qall'
+alias vpstatus='vim +PlugStatus'
+
 
 # python
 alias py='python3'
