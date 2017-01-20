@@ -706,5 +706,5 @@ let g:bufExplorerShowNoName=1
 "}}
 "}}
 
-" Set git commit message template restrictions
-autocmd Filetype gitcommit setlocal spell textwidth=72
+" Set git commit message template restrictions"{{
+autocmd Filetype gitcommit setlocal spell textwidth=72"}}
