@@ -21,15 +21,23 @@ context "system tools" do
     it { should be_installed.by("homebrew") }
   end
 
-  describe package("ack"), :if => os[:family] == "darwin" do
-    it { should be_installed.by("homebrew") }
-  end
-
   describe package("the_silver_searcher"), :if => os[:family] == "darwin" do
     it { should be_installed.by("homebrew") }
   end
 
   describe package("jq"), :if => os[:family] == "darwin" do
+    it { should be_installed.by("homebrew") }
+  end
+
+  describe package("nmap"), :if => os[:family] == "darwin" do
+    it { should be_installed.by("homebrew") }
+  end
+
+  describe package("openssl"), :if => os[:family] == "darwin" do
+    it { should be_installed.by("homebrew") }
+  end
+
+  describe package("readline"), :if => os[:family] == "darwin" do
     it { should be_installed.by("homebrew") }
   end
 end
