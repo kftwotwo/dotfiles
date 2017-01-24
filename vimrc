@@ -702,7 +702,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "}}
 "" Bufexplorer"{{
-let g:bufExplorerShowNoName=1
+let g:bufExplorerShowNoName=0
 "}}
 "}}
 
