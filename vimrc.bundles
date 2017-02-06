@@ -76,7 +76,8 @@ Plug 'tpope/vim-markdown'
 Plug 'mmalecki/vim-node.js'
 "}}
 " puppet"{{
-Plug 'rodjek/vim-puppet'
+" Plug 'rodjek/vim-puppet'
+Plug 'voxpupuli/vim-puppet'
 "}}
 " python"{{
 Plug 'davidhalter/jedi-vim'
