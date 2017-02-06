@@ -707,4 +707,10 @@ let g:bufExplorerShowNoName=0
 "}}
 
 " Set git commit message template restrictions"{{
-autocmd Filetype gitcommit setlocal spell textwidth=72"}}
+autocmd Filetype gitcommit setlocal spell textwidth=72
+"}}
+
+" Wrapped lines goes down/up to next row, rather than next line in file."{{
+noremap j gj
+noremap k gk
+"}}
