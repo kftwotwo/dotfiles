@@ -375,11 +375,19 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
 noremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'
 let g:ctrlp_open_new_file = 'r'
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
 "}}
 " snippets"{{
 let g:UltiSnipsExpandTrigger="<tab>"
