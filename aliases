@@ -1,12 +1,11 @@
 # git commamands simplified
+alias bi='bundle install'
 alias gst='git status'
 alias gco='git checkout'
 alias gci='git commit'
 alias grb='git rebase'
 alias gbr='git branch'
 alias gad='git add -A'
-alias gpl='git pull'
-alias gpu='git push'
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias glg2='git log --date-order --all --graph --name-status --format="%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias glg3='git log --pretty=format:"%C(yellow)%h %C(red)%ad %C(blue)%an%C(green)%d %C(reset)%s" --date=short'
@@ -38,9 +37,19 @@ alias ps='ps -ax'
 alias reload='source ~/.zshrc'
 
 # rails
+alias rr='rails routes'
 alias be='bundle exec'
-alias rpry='bundle exec pry -r ./config/environment'
+alias rc='rails console'
+alias rs='rails s'
 alias ropry='bundle exec pry -r ./config/application'
+alias rails-reset='rails db:drop db:create db:migrate db:seed'
+
+# Docker
+alias ddac='docker rm $(docker ps -a -q)'
+alias drails='docker-compose run web'
+alias ddai='docker rmi -f $(docker images -q)'
+alias dc='docker-compose'
+alias dcb='docker-compose build'
 
 # tmux
 alias tmx='tmux attach -t base || tmux new -s base'
